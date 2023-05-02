@@ -1,0 +1,53 @@
+.btn {
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  width: 100%;
+  cursor: pointer;
+}
+
+.large {
+  max-width: 250px;
+  /* min-width: 250px; */
+  border-radius: 40px;
+  padding: 8px 1rem;
+}
+
+.small {
+  max-width: 110px;
+  min-width: 110px;
+  border-radius: 40px;
+  padding: 8px 1rem;
+}
+
+.largeNBR {
+  max-width: 250px;
+  padding: 8px 1rem;
+}
+
+.smallNBR {
+  max-width: 200px;
+  padding: 8px 1rem;
+}
+
+.blue {
+  /* background: #166cfd; */
+  background: #1f2354;
+  color: white;
+}
+
+.yellow {
+  background: #dfa005;
+  color: #ffff;
+}
+
+/* .transparent {
+    } */
+
+.grey {
+  /* background: #b4afaffc; */
+  /* background: #f5f5fd; */
+  color: #1f2354;
+  background: #e3ebfd;
+  /* color: white; */
+}
