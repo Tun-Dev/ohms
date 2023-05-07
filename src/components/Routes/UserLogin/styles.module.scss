@@ -1,0 +1,76 @@
+.con {
+  //   border: 1px solid red;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("../../../assets/images/userloginbg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Mabry";
+
+  &__wrapper {
+    background: white;
+    width: 500px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__formgroup {
+      //   border: 1px solid red;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        margin-top: 70px;
+        margin-bottom: 100px;
+      }
+
+      p {
+        margin-bottom: 24px;
+        font-size: 2.3rem;
+      }
+
+      h5 {
+        font-size: 1.4rem;
+        margin-top: 16px;
+        margin-bottom: 34px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        input {
+          height: 56px;
+          background: #f6f7f9;
+          border: none;
+          outline: none;
+          margin-bottom: 24px;
+          padding-left: 20px;
+          font-family: "Mabry";
+          font-size: 1.6rem;
+          border-radius: 8px;
+          color: black;
+        }
+
+        input[type="text"]:focus {
+          border: 1px solid #1d4ed8;
+          color: #1d4ed8;
+        }
+
+        .btn {
+          font-weight: 400;
+          height: 56px;
+          margin-top: 44px;
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}

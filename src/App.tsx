@@ -1,11 +1,16 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
-import "./App.css";
+import { AdminLoginUI, UserLoginUI } from "components";
 import { ApplicationIcon, LogoutIcon } from "assets";
 // import { ApplicationIcon } from "assets";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      {/* <AdminLoginUI /> */}
+      <UserLoginUI />
+    </>
+  );
 }
 
 export default App;

@@ -1,0 +1,194 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ul {
+  list-style: none;
+}
+ol ::marker {
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  color: #3f3f3f;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: "Mabry";
+  src: url("./fonts/MabryPro-Medium.eot");
+  src: url("./fonts/MabryPro-Medium.woff2") format("woff2"),
+    url("./fonts/MabryPro-Medium.woff") format("woff"),
+    url("./fonts/MabryPro-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mabry";
+  src: url("./fonts/MabryPro-Light.eot");
+  src: url("./fonts/MabryPro-Light.woff2") format("woff2"),
+    url("./fonts/MabryPro-Light.woff") format("woff"),
+    url("./fonts/MabryPro-Light.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Base scss
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  // font-size: calc(
+  //   100vw / 1440 * 10
+  // ); //This is to match the font size to the design on figma, 1920px is the width of the design
+  line-height: 1;
+
+  // @include media("<desktop2") {
+  //   font-size: calc(100vw / 1440 * 10);
+  // }
+
+  // @include media("<phone") {
+  //   font-size: calc(100vw / 750 * 10);
+  // }
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}

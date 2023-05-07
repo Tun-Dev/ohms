@@ -4,19 +4,20 @@
   border: 1px solid transparent;
   width: 100%;
   cursor: pointer;
+  font-family: "Mabry";
 }
 
 .large {
-  max-width: 250px;
+  max-width: 436px;
   /* min-width: 250px; */
-  border-radius: 40px;
+  border-radius: 8px;
   padding: 8px 1rem;
 }
 
 .small {
   max-width: 110px;
   min-width: 110px;
-  border-radius: 40px;
+  border-radius: 8px;
   padding: 8px 1rem;
 }
 
@@ -32,7 +33,7 @@
 
 .blue {
   /* background: #166cfd; */
-  background: #1f2354;
+  background: #1d4ed8;
   color: white;
 }
 
