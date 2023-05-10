@@ -10,9 +10,12 @@ import { ReactComponent as HotelSlipIcon } from "./hotelslip.svg";
 import { ReactComponent as LogoutIcon } from "./logout.svg";
 import { ReactComponent as NoApplicationIcon } from "./noapplication.svg";
 import { ReactComponent as OHMSLogoIcon } from "./OHMSlogo.svg";
+import { ReactComponent as OHMSLogoADIcon } from "./OHMSAD.svg";
 import { ReactComponent as ReviewApplication } from "./reviewapplication.svg";
 import { ReactComponent as RoomsIcon } from "./rooms.svg";
 import { ReactComponent as UploadIcon } from "./upload.svg";
+import { ReactComponent as InventoryIcon } from "./inventory.svg";
+import { ReactComponent as NotificationIcon } from "./notifications.svg";
 
 export {
   ApplicationIcon,
@@ -30,4 +33,7 @@ export {
   ReviewApplication,
   RoomsIcon,
   UploadIcon,
+  InventoryIcon,
+  OHMSLogoADIcon,
+  NotificationIcon,
 };

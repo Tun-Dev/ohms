@@ -1,0 +1,151 @@
+.sidebar {
+  position: fixed;
+  //   border: 1px solid green;
+  width: 264px;
+  height: 100%;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    // border: 1px solid blue;
+  }
+
+  &__linkscon {
+    margin-top: 20px;
+    // border: 1px solid brown;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
+
+    #active {
+      background: #1d4ed8;
+      .menuinner {
+        .icons {
+          svg {
+            path {
+              stroke: white;
+            }
+          }
+        }
+
+        span {
+          color: white;
+        }
+      }
+    }
+
+    .menu {
+      //   border: 1px solid black;
+      width: 156px;
+      height: 48px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 20px;
+
+      .menuinner {
+        // border: 1px solid red;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        .icons {
+          width: 25%;
+          //   border: 1px solid blue;
+          display: flex;
+          justify-content: center;
+        }
+
+        span {
+          font-family: "Mabry";
+          font-size: 1.4rem;
+          font-weight: 400;
+          color: #32373d;
+        }
+      }
+
+      &:hover {
+        background: #1d4ed8;
+        transition: all 0.2s ease-in-out;
+
+        .menuinner {
+          .icons {
+            svg {
+              path {
+                stroke: white;
+              }
+            }
+          }
+
+          span {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  &__logout {
+    margin-top: calc(100% + 200px);
+    // border: 1px solid brown;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
+
+    .menu {
+      //   border: 1px solid black;
+      width: 156px;
+      height: 48px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 20px;
+
+      .menuinner {
+        // border: 1px solid red;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        .icons {
+          width: 25%;
+          //   border: 1px solid blue;
+          display: flex;
+          justify-content: center;
+        }
+
+        span {
+          font-family: "Mabry";
+          font-size: 1.4rem;
+          font-weight: 400;
+          color: #ef4444;
+        }
+      }
+
+      &:hover {
+        background: #ef4444;
+        transition: all 0.2s ease-in-out;
+
+        .menuinner {
+          .icons {
+            svg {
+              path {
+                stroke: white;
+              }
+            }
+          }
+
+          span {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.border {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 1px 4px rgba(0, 0, 0, 0.15);
+}

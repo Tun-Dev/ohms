@@ -17,11 +17,29 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
           <div>
             <Navbar />
           </div>
-          <div>{children}</div>
+          <div className={styles.children}>{children}</div>
         </div>
       </div>
     </>
   );
 };
 
-export { AuthLayout };
+const UserAuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
+  return (
+    <>
+      <div className={styles.userbody}>
+        <div className={styles.userleft}>
+          <Sidebar />
+        </div>
+        <div className={styles.userright}>
+          <div>
+            <Navbar />
+          </div>
+          <div className={styles.userchildren}>{children}</div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export { AuthLayout, UserAuthLayout };

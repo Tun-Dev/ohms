@@ -1,14 +1,25 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { AdminLoginUI, UserLoginUI } from "components";
-import { ApplicationIcon, LogoutIcon } from "assets";
-// import { ApplicationIcon } from "assets";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Router } from "utils";
 
 function App() {
   return (
     <>
-      {/* <AdminLoginUI /> */}
-      <UserLoginUI />
+      <div>
+        <BrowserRouter>
+          <Routes>
+            {Router.map((route, index) => {
+              const { path, Component, Layout } = route;
+              const PageComponent = (
+                <Layout>
+                  <Component />
+                </Layout>
+              );
+              return <Route key={index} path={path} element={PageComponent} />;
+            })}
+          </Routes>
+        </BrowserRouter>
+      </div>
     </>
   );
 }
