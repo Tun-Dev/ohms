@@ -1,0 +1,32 @@
+.con {
+  //   border: 1px solid red;
+  font-family: "Mabry";
+  display: flex;
+  flex-direction: column;
+  //   justify-content: center;
+  align-items: center;
+
+  h4 {
+    font-size: 4rem;
+    font-weight: 400;
+  }
+
+  h5 {
+    font-size: 1.6rem;
+    max-width: 494px;
+    text-align: center;
+    margin-top: 12px;
+    color: #5f6368;
+  }
+
+  .btn {
+    width: fit-content;
+    padding: 19px 38px;
+    font-size: 1.2rem;
+    margin-top: 67px;
+    color: #1d4ed8;
+    border: 1px solid #1d4ed8;
+    background: #ecf2fe;
+    border-radius: 8px;
+  }
+}

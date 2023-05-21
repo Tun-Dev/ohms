@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 
 interface ButtonProps {
   className?: string;
-  size?: "large" | "small" | "largeNBR" | "smallNBR";
+  size?: "large" | "small" | "medium" | "largeNBR" | "smallNBR";
   color: "yellow" | "grey" | "blue" | "transparent";
   onClick: () => void;
   type?: "button" | "submit" | "reset";
