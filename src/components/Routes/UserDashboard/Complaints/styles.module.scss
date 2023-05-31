@@ -1,0 +1,58 @@
+.con {
+  min-height: calc(100vh - 100px);
+  font-family: "Mabry";
+
+  &__wrapper {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 20px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .input {
+        display: flex;
+        flex-direction: column;
+        max-width: 528px;
+        margin-bottom: 24px;
+
+        label {
+          font-size: 1.4rem;
+          color: #797d80;
+          margin-bottom: 2px;
+        }
+
+        input {
+          height: 48px;
+          border: 1px solid #d0d5dd;
+          //   background: #f6f7f9;
+          border-radius: 8px;
+          //   border: none;
+          outline: none;
+          padding-left: 10px;
+        }
+
+        textarea {
+          border: 1px solid #d0d5dd;
+          border-radius: 8px;
+          resize: none;
+          outline: none;
+          padding: 10px;
+        }
+      }
+
+      .btncon {
+        display: flex;
+        justify-content: flex-end;
+        max-width: 528px;
+        .btn {
+          max-width: 159px;
+          height: 48px;
+          font-size: 12px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
