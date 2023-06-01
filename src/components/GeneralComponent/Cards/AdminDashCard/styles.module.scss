@@ -1,0 +1,41 @@
+.con {
+  background: white;
+  max-width: 344px;
+  flex-shrink: 0; /*  added  */
+  flex-grow: 1;
+  height: 100px;
+  //   border: 1px solid red;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Mabry";
+
+  &__wrapper {
+    width: 88%;
+    // border: 1px solid blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    &__left {
+      svg {
+        border-bottom: 20px;
+      }
+
+      h4 {
+        font-size: 1.4rem;
+        margin-top: 16px;
+        color: #32373d;
+      }
+    }
+
+    &__right {
+      h4 {
+        font-size: 3.2rem;
+        color: #32373d;
+        font-weight: 600;
+      }
+    }
+  }
+}

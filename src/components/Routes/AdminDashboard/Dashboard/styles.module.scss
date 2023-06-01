@@ -1,3 +1,70 @@
 .con {
   min-height: 100vh;
+  // border: 1px solid black;
+  min-height: calc(100vh - 100px);
+  background: #f6f7f9;
+  font-family: "Mabry";
+
+  &__wrapper {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 30px;
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__bottom {
+      // border: 1px solid red;
+      margin-bottom: 50px;
+      margin-top: 60px;
+      background: white;
+      border-radius: 8px;
+
+      &__inner {
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 30px;
+
+        .top {
+          h4 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #32373d;
+            margin-bottom: 4px;
+          }
+
+          h5 {
+            font-size: 1.4rem;
+            color: #5f6368;
+          }
+        }
+
+        .down {
+          margin-top: 30px;
+          margin-bottom: 30px;
+          // border: 1px solid black;
+
+          .headers {
+            display: flex;
+
+            .header {
+              // border: 1px solid blue;
+              width: 25%;
+              height: 40px;
+              display: flex;
+              align-items: center;
+
+              h5 {
+                font-size: 1.2rem;
+                color: #667085;
+                font-weight: 400;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

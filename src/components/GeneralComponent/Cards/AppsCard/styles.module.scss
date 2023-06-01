@@ -1,0 +1,77 @@
+.con {
+  //   border: 1px solid blue;
+  border-top: 1px solid #ecebf0;
+  display: flex;
+  font-family: "Mabry";
+
+  .item {
+    width: 25%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+    h4 {
+      font-size: 1.6rem;
+      color: #5f6368;
+      font-weight: 500;
+    }
+
+    .status {
+      //   border: 1px solid green;
+      width: 103px;
+      height: 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+
+      h5 {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+    }
+
+    .approved {
+      background: #dcfce7;
+
+      h5 {
+        color: #22c55e;
+      }
+
+      .dot {
+        background: #22c55e;
+      }
+    }
+
+    .pending {
+      background: #fef9c3;
+
+      h5 {
+        color: #facc15;
+      }
+
+      .dot {
+        background: #facc15;
+      }
+    }
+
+    .rejected {
+      background: #fee2e2;
+
+      h5 {
+        color: #ef4444;
+      }
+
+      .dot {
+        background: #ef4444;
+      }
+    }
+  }
+}
