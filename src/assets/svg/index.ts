@@ -16,6 +16,7 @@ import { ReactComponent as RoomsIcon } from "./rooms.svg";
 import { ReactComponent as UploadIcon } from "./upload.svg";
 import { ReactComponent as InventoryIcon } from "./inventory.svg";
 import { ReactComponent as NotificationIcon } from "./notifications.svg";
+import { ReactComponent as CalendarIcon } from "./calendar.svg";
 
 export {
   ApplicationIcon,
@@ -36,4 +37,5 @@ export {
   InventoryIcon,
   OHMSLogoADIcon,
   NotificationIcon,
+  CalendarIcon,
 };
