@@ -1,0 +1,72 @@
+.comps {
+  //   border: 1px solid red;
+  font-family: "Mabry";
+
+  &__wrapper {
+    width: 95%;
+    // border: 1px solid black;
+    margin: 0 auto;
+    border-bottom: 1px solid #ecebf0;
+
+    &__top {
+      display: flex;
+      align-items: center;
+      margin-top: 16px;
+
+      .img {
+        margin-right: 16px;
+      }
+
+      .title {
+        h4 {
+          color: #32373d;
+          font-size: 1.6rem;
+          font-weight: 400;
+          margin-bottom: 5px;
+        }
+
+        h5 {
+          color: #797d80;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    &__bottom {
+      display: flex;
+      margin-top: 8px;
+      margin-bottom: 16px;
+
+      .left {
+        width: 85%;
+        // border: 1px solid red;
+
+        h5 {
+          font-size: 1.6rem;
+          max-width: 804px;
+          line-height: 24px;
+        }
+      }
+
+      .right {
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        // justify-content: end;
+
+        h5 {
+          font-size: 1.4rem;
+          color: #1d4ed8;
+          font-weight: 600;
+          line-height: 20px;
+        }
+      }
+    }
+
+    // .divider {
+    //   border-bottom: 1px solid #ecebf0;
+    //   margin-top: 20px;
+    // }
+  }
+}
