@@ -2,8 +2,10 @@ import React from "react";
 import styles from "./styles.module.scss";
 import { Button } from "components/GeneralComponent";
 import { OHMSLogoIcon } from "assets";
+import { useNavigate } from "react-router-dom";
 
 const UserLoginUI = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className={styles.con}>
@@ -19,7 +21,9 @@ const UserLoginUI = () => {
                 className={styles.btn}
                 size="large"
                 color="blue"
-                onClick={() => null}
+                onClick={() => {
+                  navigate("/dashboard");
+                }}
               >
                 LOG IN
               </Button>

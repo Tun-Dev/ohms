@@ -115,7 +115,17 @@ const Sidebar = () => {
             // id={window.location.pathname === item.href ? styles.active : ""}
             className={styles.menu}
           >
-            <div className={styles.menuinner}>
+            <div
+              onClick={() => {
+                // localStorage.removeItem("token");
+                if (window.location.pathname.startsWith("/admin")) {
+                  navigate("/adminlogin");
+                } else {
+                  navigate("/");
+                }
+              }}
+              className={styles.menuinner}
+            >
               <div className={styles.icons}>
                 <LogoutIcon />
                 {/* <Icon className={styles.icon} /> */}
