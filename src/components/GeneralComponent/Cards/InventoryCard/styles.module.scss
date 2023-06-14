@@ -1,0 +1,25 @@
+.con {
+  //   border: 1px solid blue;
+  border-top: 1px solid #ecebf0;
+  display: flex;
+  font-family: "Mabry";
+
+  .item {
+    width: 33.33%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+    h5 {
+      color: #32373d;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    h4 {
+      font-size: 1.6rem;
+      color: #5f6368;
+      font-weight: 500;
+    }
+  }
+}
