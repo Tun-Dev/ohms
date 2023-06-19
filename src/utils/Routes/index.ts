@@ -1,13 +1,13 @@
 export const routes = {
   //   home: "/",
   userlogin: "/",
-  adminlogin: "/adminlogin",
+  adminlogin: "/admin",
 
   //   User Dashboard Routes
-  userdashboard: "/dashboard",
-  userapplication: "/application",
-  userconfirmation: "/confirmation",
-  usercomplaint: "/complaint",
+  userdashboard: "/user/dashboard",
+  userapplication: "/user/application",
+  userconfirmation: "/user/confirmation",
+  usercomplaint: "/user/complaint",
 
   //   Admin Dashboard Routes
   admindashboard: "/admin/dashboard",

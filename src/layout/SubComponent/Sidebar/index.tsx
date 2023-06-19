@@ -119,7 +119,7 @@ const Sidebar = () => {
               onClick={() => {
                 // localStorage.removeItem("token");
                 if (window.location.pathname.startsWith("/admin")) {
-                  navigate("/adminlogin");
+                  navigate("/admin");
                 } else {
                   navigate("/");
                 }

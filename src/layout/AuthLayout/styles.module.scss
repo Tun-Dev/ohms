@@ -50,17 +50,35 @@
   }
 }
 
+.userbody__mobile {
+  display: none;
+}
+
 // .userbody {
 //   display: flex;
 // }
 
 @media only screen and (max-width: 800px) {
-  // .userbody {
-  //   // display: none;
-  //   // border: 1px solid red;
-  // }
+  .userbody {
+    display: none;
+    // border: 1px solid red;
+  }
 
   .userbody__mobile {
+    display: flex;
     border: 1px solid red;
+
+    &__inner {
+      border: 1px solid blue;
+
+      .userchildren {
+        border: 1px solid green;
+        min-height: calc(120px - 100%);
+      }
+    }
+  }
+
+  .body {
+    display: none;
   }
 }

@@ -22,7 +22,7 @@ const UserLoginUI = () => {
                 size="large"
                 color="blue"
                 onClick={() => {
-                  navigate("/dashboard");
+                  navigate("/user/dashboard");
                 }}
               >
                 LOG IN

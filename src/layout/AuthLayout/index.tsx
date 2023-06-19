@@ -1,12 +1,13 @@
 import React from "react";
 import { Navbar, Sidebar } from "layout/SubComponent";
+import { Outlet } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
 }
 
-const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
+const AuthLayout = () => {
   return (
     <>
       <div className={styles.body}>
@@ -17,14 +18,28 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
           <div>
             <Navbar />
           </div>
-          <div className={styles.children}>{children}</div>
+          <div className={styles.children}>
+            <Outlet />
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile View */}
+      <div className={styles.body__mobile}>
+        <div className={styles.body__mobile__inner}>
+          <div>
+            <Navbar />
+          </div>
+          <div className={styles.bodychildren}>
+            <Outlet />
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-const UserAuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
+const UserAuthLayout = () => {
   return (
     <>
       <div className={styles.userbody}>
@@ -35,20 +50,24 @@ const UserAuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
           <div>
             <Navbar />
           </div>
-          <div className={styles.userchildren}>{children}</div>
+          <div className={styles.userchildren}>
+            <Outlet />
+          </div>
         </div>
       </div>
 
       {/* Mobile UserLayout */}
 
-      {/* <div className={styles.userbody__mobile}>
+      <div className={styles.userbody__mobile}>
         <div className={styles.userbody__mobile__inner}>
           <div>
             <Navbar />
           </div>
-          <div className={styles.userchildren}>{children}</div>
+          <div className={styles.userchildren}>
+            <Outlet />
+          </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };
