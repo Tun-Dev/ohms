@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Router } from "utils";
+// import { Router } from "utils";
 
 function App() {
   return (
     <>
-      <div>
+      {/* <div>
         <BrowserRouter>
           <Routes>
             {Router.map((route, index) => {
@@ -19,7 +19,7 @@ function App() {
             })}
           </Routes>
         </BrowserRouter>
-      </div>
+      </div> */}
     </>
   );
 }

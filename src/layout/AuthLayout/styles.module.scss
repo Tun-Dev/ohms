@@ -66,13 +66,13 @@
 
   .userbody__mobile {
     display: flex;
-    border: 1px solid red;
+    // border: 1px solid red;
 
     &__inner {
-      border: 1px solid blue;
+      // border: 1px solid blue;
 
       .userchildren {
-        border: 1px solid green;
+        // border: 1px solid green;
         min-height: calc(120px - 100%);
       }
     }
