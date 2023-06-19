@@ -70,9 +70,11 @@
 
     &__inner {
       // border: 1px solid blue;
+      width: 100%;
 
       .userchildren {
         // border: 1px solid green;
+
         min-height: calc(120px - 100%);
       }
     }

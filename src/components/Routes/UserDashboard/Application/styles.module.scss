@@ -231,3 +231,86 @@
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .con {
+    &__wrapper {
+      // border: 1px solid red;
+      width: 90%;
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__info {
+        width: 100%;
+        //   border: 1px solid blue;
+
+        .wordsInput {
+          display: flex;
+          flex-direction: column;
+          // border: 1px solid green;
+          width: 98%;
+          margin-top: 16px;
+
+          .input {
+            &__radio {
+              input[type="radio" i] {
+                width: 20px;
+                height: 20px;
+              }
+            }
+          }
+        }
+      }
+
+      &__files {
+        width: 100%;
+        margin-top: 30px;
+
+        .divider {
+          border-left: none;
+        }
+
+        .filescon {
+          width: 100%;
+          // border: 1px solid red;
+          margin: 0 auto;
+
+          .files {
+            // border: 1px solid red;
+            margin-top: 26px;
+            display: flex;
+            // align-items: center;
+            flex-wrap: wrap;
+
+            .file {
+              // border: 1px solid blue;
+              // width: 252px;
+              width: 100%;
+              margin-right: 0px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+
+        .submit {
+          // border: 1px solid red;
+          margin-top: 65px;
+          margin-bottom: 40px;
+
+          display: flex;
+          justify-content: flex-end;
+
+          .btn {
+            width: 188px;
+            height: 48px;
+            font-size: 12px;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+}
