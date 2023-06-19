@@ -77,3 +77,5 @@
 //     Layout: UserAuthLayout,
 //   },
 // ];
+
+export {};
