@@ -49,3 +49,18 @@
     }
   }
 }
+
+// .userbody {
+//   display: flex;
+// }
+
+@media only screen and (max-width: 800px) {
+  // .userbody {
+  //   // display: none;
+  //   // border: 1px solid red;
+  // }
+
+  .userbody__mobile {
+    border: 1px solid red;
+  }
+}

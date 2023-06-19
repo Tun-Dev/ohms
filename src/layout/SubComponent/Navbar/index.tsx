@@ -59,6 +59,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile Navbar */}
+      <div className={styles.navbar__mobile}></div>
     </>
   );
 };

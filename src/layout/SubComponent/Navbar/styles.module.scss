@@ -39,3 +39,222 @@
     }
   }
 }
+
+// .navmobile {
+//   display: contents;
+//   // border: 1px solid red;
+
+//   .container {
+//     background: #fff;
+//     border-bottom: 1px solid #e6e9ec;
+//     position: sticky;
+//     width: 100%;
+//     top: 0px;
+//     z-index: 100;
+//     // margin-bottom: 0;
+//   }
+
+//   .containerAuth {
+//     background: #fff;
+//     border-bottom: 1px solid #e6e9ec;
+//     position: fixed;
+//     width: 100%;
+//     top: 0px;
+//     z-index: 100;
+//     // margin-bottom: 0;
+//   }
+
+//   .wrapper {
+//     // padding: 20px 40px;
+//     height: 64px;
+//     width: 90%;
+//     margin: 0 auto;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//   }
+
+//   .hamburger {
+//     width: 30px;
+//     height: 3px;
+//     background: #170c37;
+//     border-radius: 5px;
+//     box-shadow: 0 2px 5px rgb(255, 101, 47, 0.2);
+//     transition: all 0.5s ease-in-out;
+
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       width: 30px;
+//       height: 3px;
+//       background: #170c37;
+//       border-radius: 5px;
+//       transition: all 0.5s ease-in-out;
+//       transform: translateY(-10px);
+//     }
+
+//     &::after {
+//       content: "";
+//       position: absolute;
+//       width: 30px;
+//       height: 3px;
+//       background: #170c37;
+//       border-radius: 5px;
+//       transition: all 0.5s ease-in-out;
+//       transform: translateY(10px);
+//     }
+
+//     cursor: pointer;
+//   }
+
+//   .activeHamburger {
+//     width: 30px;
+//     height: 3px;
+//     border-radius: 5px;
+//     transform: translateX(-50px);
+//     background: transparent;
+//     transition: all 0.5s ease-in-out;
+
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       width: 30px;
+//       height: 3px;
+//       background: #170c37;
+//       border-radius: 5px;
+//       transition: all 0.5s ease-in-out;
+//       transform: rotate(45deg) translate(35px, -35px);
+//     }
+
+//     &::after {
+//       content: "";
+//       position: absolute;
+//       width: 30px;
+//       height: 3px;
+//       background: #170c37;
+//       border-radius: 5px;
+//       transition: all 0.5s ease-in-out;
+//       transform: rotate(-45deg) translate(35px, 35px);
+//     }
+
+//     cursor: pointer;
+//   }
+
+//   .sidenav {
+//     position: fixed;
+//     width: 100%;
+//     height: 100vh;
+//     background: #fff;
+//     transform: translateX(100%);
+//     transition: all 0.5s ease-in-out;
+//     z-index: 100;
+//     margin-top: 0;
+//   }
+
+//   .activeSidenav {
+//     position: fixed;
+//     width: 100%;
+//     height: 100vh;
+//     background: #fff;
+//     transform: translateX(50%);
+//     transition: all 0.5s ease-in-out;
+//     z-index: 100;
+//     margin-top: 0;
+//   }
+
+//   .links {
+//     display: flex;
+//     flex-direction: column;
+//     margin-top: 40px;
+//     margin-left: 10%;
+
+//     a {
+//       font-family: $helvetica-font;
+//       font-size: 14px;
+//       color: #545a61;
+//       margin-bottom: 20px;
+//     }
+//   }
+
+//   .btns {
+//     margin-left: 10%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     height: 100px;
+//   }
+
+//   .logo {
+//     cursor: pointer;
+//   }
+
+//   // For Auth MObile in NAvbar file
+//   .sidenavAuth {
+//     position: fixed;
+//     width: 100%;
+//     height: 100vh;
+//     background: #0c152e;
+//     transform: translateX(-100%);
+//     transition: all 0.5s ease-in-out;
+//     z-index: 1000;
+//   }
+
+//   .activeSidenavAuth {
+//     position: fixed;
+//     width: 100%;
+//     height: 100vh;
+//     background: #0c152e;
+//     transform: translateX(-50%);
+//     transition: all 0.5s ease-in-out;
+//     z-index: 1000;
+//   }
+
+//   .linkscon {
+//     // z-index: 10000;
+//     // border: 1px solid red;
+//     ul {
+//       padding-inline-start: 0;
+//     }
+
+//     .links {
+//       margin-top: 0px;
+//     }
+
+//     li {
+//       // border: 1px dotted red;
+//       margin-left: 50%;
+
+//       a {
+//         display: flex;
+//         align-items: center;
+//         justify-self: center;
+//         // align-self: center;
+//         // justify-content: center;
+//         // border: 1px solid yellow;
+//         margin-top: 20px;
+
+//         div {
+//           width: 80px;
+//           // border: 1px solid white;
+//           display: flex;
+//           // align-items: center;
+//           justify-content: center;
+//         }
+
+//         span {
+//           color: #fff;
+//         }
+//       }
+//     }
+
+//     #active {
+//       border-left: 8px solid #4070f4;
+//       // margin-left: 50%;
+//       background: rgba(0, 0, 0, 0.2);
+
+//       &:hover {
+//         background: rgba(0, 0, 0, 0.2);
+//       }
+//     }
+//   }
+// }

@@ -38,6 +38,17 @@ const UserAuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
           <div className={styles.userchildren}>{children}</div>
         </div>
       </div>
+
+      {/* Mobile UserLayout */}
+
+      {/* <div className={styles.userbody__mobile}>
+        <div className={styles.userbody__mobile__inner}>
+          <div>
+            <Navbar />
+          </div>
+          <div className={styles.userchildren}>{children}</div>
+        </div>
+      </div> */}
     </>
   );
 };
