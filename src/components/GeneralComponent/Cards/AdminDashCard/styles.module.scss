@@ -39,3 +39,21 @@
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .con {
+    background: white;
+    // max-width: 344px;
+    max-width: 100%;
+    // width: 100%;
+    margin-bottom: 10px;
+
+    &__wrapper {
+      width: 88%;
+      // border: 1px solid blue;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+    }
+  }
+}
