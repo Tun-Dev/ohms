@@ -75,3 +75,26 @@
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .con {
+    .item {
+      width: 33.33%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+
+      h4 {
+        font-size: 1.4rem;
+        color: #5f6368;
+        font-weight: 500;
+      }
+
+      &:nth-child(3),
+      &:nth-child(4) {
+        // border: 1px solid red;
+        display: none;
+      }
+    }
+  }
+}

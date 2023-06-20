@@ -77,3 +77,41 @@
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .con {
+    &__wrapper {
+      // width: 95%;
+      // max-width: 668px;
+      width: 90%;
+      margin: 0 auto;
+
+      &__top {
+        padding-top: 30px;
+        //   border: 1px solid green;
+
+        &__inner {
+          // border: 1px solid blue;
+          // margin-top: 30px;
+          width: 100%;
+          margin: 0 auto;
+          display: flex;
+          justify-content: flex-start;
+
+          .type {
+            display: flex;
+            align-items: start;
+            width: 162px;
+            margin-left: 0px;
+
+            .type__select {
+              width: 100%;
+              font-size: 1.2rem;
+              color: #32373d;
+            }
+          }
+        }
+      }
+    }
+  }
+}

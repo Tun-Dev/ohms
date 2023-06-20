@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
+import { truncateString } from "utils";
 import styles from "./styles.module.scss";
 import { AppsCardData } from "./data";
 
@@ -17,6 +18,23 @@ const AppsCard: React.FC<AppsCardProps> = ({
   dept,
   date,
 }) => {
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  const handleWindowResize = useCallback(() => {
+    setWindowSize(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, [handleWindowResize]);
+
+  // useEffect(() => {
+  //   console.log(window.innerWidth);
+  // }, [window.innerWidth]);
+
   return (
     <>
       <div className={styles.con}>
@@ -40,7 +58,7 @@ const AppsCard: React.FC<AppsCardProps> = ({
           </div>
         </div>
         <div className={styles.item}>
-          <h4> {name}</h4>
+          <h4> {windowSize > 800 ? name : truncateString(name, 11)}</h4>
         </div>
         <div className={styles.item}>
           <h4>{faculty}</h4>

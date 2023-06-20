@@ -79,3 +79,38 @@
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .con {
+    &__wrapper {
+      width: 90%;
+
+      &__top {
+        padding-top: 30px;
+        //   border: 1px solid green;
+
+        &__inner {
+          // border: 1px solid blue;
+          // margin-top: 30px;
+          width: 100%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+
+          .sort {
+            width: 100%;
+          }
+
+          .type {
+            display: flex;
+            align-items: end;
+            width: 50%;
+            margin-left: 0px;
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
+}

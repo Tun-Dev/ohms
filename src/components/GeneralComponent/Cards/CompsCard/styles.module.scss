@@ -70,3 +70,54 @@
     // }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .comps {
+    //   border: 1px solid red;
+    font-family: "Mabry";
+
+    &__wrapper {
+      width: 100%;
+      // border: 1px solid black;
+      margin: 0 auto;
+      border-bottom: 1px solid #ecebf0;
+
+      &__top {
+        .title {
+          h5 {
+            color: #797d80;
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      &__bottom {
+        .left {
+          width: 75%;
+          // border: 1px solid red;
+
+          h5 {
+            font-size: 1.4rem;
+            max-width: 300px;
+            line-height: 24px;
+          }
+        }
+
+        .right {
+          width: 25%;
+
+          h5 {
+            font-size: 1.2rem;
+            color: #1d4ed8;
+            font-weight: 400;
+          }
+        }
+      }
+
+      // .divider {
+      //   border-bottom: 1px solid #ecebf0;
+      //   margin-top: 20px;
+      // }
+    }
+  }
+}
