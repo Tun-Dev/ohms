@@ -86,12 +86,12 @@ const AdminComplaintsUI = () => {
                 </div>
               </div>
               <div className={styles.type}>
-                <Select
+                {/* <Select
                   placeholder="Filter by status"
                   isMulti={false}
                   options={typeOptions}
                   className={styles.type__select}
-                />
+                /> */}
               </div>
             </div>
           </div>

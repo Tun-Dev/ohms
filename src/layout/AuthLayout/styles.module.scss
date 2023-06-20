@@ -53,7 +53,9 @@
 .userbody__mobile {
   display: none;
 }
-
+.body__mobile {
+  display: none;
+}
 // .userbody {
 //   display: flex;
 // }
@@ -82,5 +84,20 @@
 
   .body {
     display: none;
+  }
+
+  .body__mobile {
+    display: flex;
+
+    &__inner {
+      // border: 1px solid blue;
+      width: 100%;
+
+      .children {
+        // border: 1px solid green;
+
+        min-height: calc(120px - 100%);
+      }
+    }
   }
 }
