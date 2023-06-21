@@ -53,9 +53,14 @@ const Sidebar = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const LogOut = () => {
+  const LogOutAdmin = () => {
     dispatch(logout());
     navigate("/admin");
+  };
+
+  const LogOutUser = () => {
+    dispatch(logout());
+    navigate("/");
   };
 
   return (
@@ -130,9 +135,11 @@ const Sidebar = () => {
               onClick={() => {
                 // localStorage.removeItem("token");
                 if (window.location.pathname.startsWith("/admin")) {
-                  LogOut();
-                } else {
-                  navigate("/");
+                  LogOutAdmin();
+                }
+
+                if (window.location.pathname.startsWith("/user")) {
+                  LogOutUser();
                 }
               }}
               className={styles.menuinner}

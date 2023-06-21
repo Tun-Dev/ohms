@@ -252,13 +252,21 @@
   }
 
   .right {
-    width: 80%;
+    width: 60%;
     // border: 1px solid red;
     padding: 10px 0px;
 
     h4 {
       margin-top: 0;
     }
+  }
+
+  .close {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
 }
 

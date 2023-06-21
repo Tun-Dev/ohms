@@ -18,6 +18,7 @@ import { ReactComponent as InventoryIcon } from "./inventory.svg";
 import { ReactComponent as NotificationIcon } from "./notifications.svg";
 import { ReactComponent as CalendarIcon } from "./calendar.svg";
 import { ReactComponent as DocumentIcon } from "./emptyDocSmall.svg";
+import { ReactComponent as CloseIcon } from "./close.svg";
 
 export {
   ApplicationIcon,
@@ -40,4 +41,5 @@ export {
   NotificationIcon,
   CalendarIcon,
   DocumentIcon,
+  CloseIcon,
 };

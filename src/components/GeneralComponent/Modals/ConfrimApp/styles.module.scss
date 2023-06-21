@@ -1,0 +1,45 @@
+.con {
+  //   border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Mabry";
+
+  .top {
+    margin-top: 30px;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    h4 {
+      font-size: 2.4rem;
+      color: #32373d;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    h5 {
+      font-size: 1.6rem;
+      color: #5f6368;
+    }
+  }
+
+  .down {
+    margin-bottom: 30px;
+    // border: 1px solid red;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+
+    .btn1 {
+      font-weight: 400;
+    }
+
+    .btn2 {
+      font-weight: 400;
+      font-size: 1.3rem;
+    }
+  }
+}

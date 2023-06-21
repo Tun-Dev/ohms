@@ -2,6 +2,7 @@ import React from "react";
 import * as ReactDOM from "react-dom/client";
 import App from "./App";
 import "react-datepicker/dist/react-datepicker.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ErrorPage from "error-page";
 import { UnAuthLayout, AuthLayout, UserAuthLayout } from "layout";
 // import { UserAuthLayout } from "layout";

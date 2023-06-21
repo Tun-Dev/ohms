@@ -2,14 +2,22 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
-import { UploadIcon } from "assets";
+import { UploadIcon, CloseIcon } from "assets";
 import { facultyValues, levelValues } from "./formData";
 import { DocumentIcon } from "assets";
+import { truncateString } from "utils";
+import { ConfirmApplication } from "components/GeneralComponent";
 import { Button } from "components/GeneralComponent";
 // import { useForm } from "react-hook-form";
 // import { Button } from "react-bootstrap";
 
-const FileItem = () => {
+interface FileItemProps {
+  name?: string;
+  size?: string;
+  onClick: () => void;
+}
+
+const FileItem: React.FC<FileItemProps> = ({ name, size, onClick }) => {
   return (
     <>
       <div className={styles.fileitem}>
@@ -17,8 +25,11 @@ const FileItem = () => {
           <DocumentIcon />
         </div>
         <div className={styles.right}>
-          <h4>Testing.png</h4>
-          <h5>2.4mb</h5>
+          <h4>{name}</h4>
+          <h5>{size}</h5>
+        </div>
+        <div onClick={() => onClick()} className={styles.close}>
+          <CloseIcon />
         </div>
       </div>
     </>
@@ -26,17 +37,99 @@ const FileItem = () => {
 };
 
 const UserApplicationUI = () => {
-  const [paymentSlip, setPaymentSlip] = useState([]);
-  const [lawyerLetter, setLawyerLetter] = useState([]);
-  const [wapicReceipt, setWapicReceipt] = useState([]);
-  const [lagmobileReceipt, setLagmobileReceipt] = useState([]);
+  const [paymentSlip, setPaymentSlip] = useState<any>([]);
+  const [lawyerLetter, setLawyerLetter] = useState<any>([]);
+  const [wapicReceipt, setWapicReceipt] = useState<any>([]);
+  const [lagmobileReceipt, setLagmobileReceipt] = useState<any>([]);
+  const [finalData, setFinalData] = useState<any>([]);
+  const [show, setShow] = useState(false);
   const { handleSubmit, setValue, control, watch, reset, register } = useForm();
 
   const submitApp = (data: any) => {
-    console.log(data);
+    const n_data = {
+      ...data,
+      hostelPaySlipUrl: paymentSlip,
+      letterUrl: lawyerLetter,
+      wapicUrl: wapicReceipt,
+      lagmobileUrl: lagmobileReceipt,
+    };
+    console.log(n_data);
+    setFinalData(n_data);
   };
+
+  const getSizeInMb = (bytes: any) => {
+    const sizeInMb = bytes / 1048576;
+    return sizeInMb.toFixed(1) + " MB";
+  };
+
+  const handleFileChangePay = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const file: File | undefined = event.target.files?.[0];
+
+    setPaymentSlip([file]);
+  };
+
+  const handleFileChangeLaw = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const file: File | undefined = event.target.files?.[0];
+
+    setLawyerLetter([...lawyerLetter, file]);
+  };
+
+  const handleFileChangeWap = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const file: File | undefined = event.target.files?.[0];
+
+    setWapicReceipt([...wapicReceipt, file]);
+  };
+
+  const handleFileChangeLag = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const file: File | undefined = event.target.files?.[0];
+
+    setLagmobileReceipt([...lagmobileReceipt, file]);
+  };
+
+  // };
+  const removeFilePay = (filename: any) => {
+    setPaymentSlip(paymentSlip.filter((file: any) => file.name !== filename));
+  };
+  // };
+  const removeFileLaw = (filename: any) => {
+    setLawyerLetter(lawyerLetter.filter((file: any) => file.name !== filename));
+  };
+  // };
+  const removeFileWap = (filename: any) => {
+    setWapicReceipt(wapicReceipt.filter((file: any) => file.name !== filename));
+  };
+  // };
+  const removeFileLag = (filename: any) => {
+    setLagmobileReceipt(
+      lagmobileReceipt.filter((file: any) => file.name !== filename)
+    );
+  };
+
+  useEffect(() => {
+    console.log(paymentSlip);
+  }, [paymentSlip]);
+
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+
+  //   setPaymentSlip([...paymentSlip, file]);
+  // };
+
   return (
     <>
+      <ConfirmApplication
+        show={show}
+        closeModal={() => setShow(!show)}
+        data={finalData}
+      />
       <div className={styles.con}>
         <div className={styles.con__wrapper}>
           <form onSubmit={handleSubmit(submitApp)}>
@@ -47,16 +140,16 @@ const UserApplicationUI = () => {
               <div className={styles.wordsInput}>
                 <div className={styles.input}>
                   <label htmlFor="name">Surname</label>
-                  <input type="text" id="name" {...register("surname")} />
+                  <input type="text" id="name" {...register("fistname")} />
                 </div>
                 <div className={styles.inputgroups}>
                   <div className={styles.input}>
                     <label htmlFor="name">First name</label>
-                    <input type="text" id="name" {...register("firstName")} />
+                    <input type="text" id="name" {...register("lastname")} />
                   </div>
                   <div className={styles.input}>
                     <label htmlFor="name">Other names</label>
-                    <input type="text" id="name" {...register("lastName")} />
+                    <input type="text" id="name" {...register("othername")} />
                   </div>
                 </div>
                 <div className={styles.input}>
@@ -165,7 +258,7 @@ const UserApplicationUI = () => {
                   <div className={styles.file}>
                     <h5>Hostel payment slip</h5>
                     <div className={styles.file__inner}>
-                      <input type="file" />
+                      <input type="file" onChange={handleFileChangePay} />
                       <Button
                         color="transparent"
                         size="small"
@@ -179,12 +272,22 @@ const UserApplicationUI = () => {
                         <p>PDF (max. 2MB)</p>
                       </Button>
                     </div>
-                    <FileItem />
+                    {paymentSlip &&
+                      paymentSlip.map((item: any, index: number) => {
+                        return (
+                          <FileItem
+                            key={index}
+                            name={truncateString(item.name, 15)}
+                            size={getSizeInMb(item.size)}
+                            onClick={() => removeFilePay(item.name)}
+                          />
+                        );
+                      })}
                   </div>
                   <div className={styles.file}>
                     <h5>Signed letter by lawyer</h5>
                     <div className={styles.file__inner}>
-                      <input type="file" />
+                      <input type="file" onChange={handleFileChangeLaw} />
                       <Button
                         color="transparent"
                         size="small"
@@ -198,11 +301,22 @@ const UserApplicationUI = () => {
                         <p>PDF (max. 2MB)</p>
                       </Button>
                     </div>
+                    {lawyerLetter &&
+                      lawyerLetter.map((item: any, index: number) => {
+                        return (
+                          <FileItem
+                            key={index}
+                            name={truncateString(item.name, 15)}
+                            size={getSizeInMb(item.size)}
+                            onClick={() => removeFileLaw}
+                          />
+                        );
+                      })}
                   </div>
                   <div className={styles.file}>
                     <h5>WAPIC insurance receipt</h5>
                     <div className={styles.file__inner}>
-                      <input type="file" />
+                      <input type="file" onChange={handleFileChangeWap} />
                       <Button
                         color="transparent"
                         size="small"
@@ -216,11 +330,22 @@ const UserApplicationUI = () => {
                         <p>PDF (max. 2MB)</p>
                       </Button>
                     </div>
+                    {wapicReceipt &&
+                      wapicReceipt.map((item: any, index: number) => {
+                        return (
+                          <FileItem
+                            key={index}
+                            name={truncateString(item.name, 15)}
+                            size={getSizeInMb(item.size)}
+                            onClick={() => removeFileWap}
+                          />
+                        );
+                      })}
                   </div>
                   <div className={styles.file}>
                     <h5>Lagmobile receipt</h5>
                     <div className={styles.file__inner}>
-                      <input type="file" />
+                      <input type="file" onChange={handleFileChangeLag} />
                       <Button
                         color="transparent"
                         size="small"
@@ -234,6 +359,17 @@ const UserApplicationUI = () => {
                         <p>PDF (max. 2MB)</p>
                       </Button>
                     </div>
+                    {lagmobileReceipt &&
+                      lagmobileReceipt.map((item: any, index: number) => {
+                        return (
+                          <FileItem
+                            key={index}
+                            name={truncateString(item.name, 15)}
+                            size={getSizeInMb(item.size)}
+                            onClick={() => removeFileLag}
+                          />
+                        );
+                      })}
                   </div>
                 </div>
               </div>
@@ -242,7 +378,7 @@ const UserApplicationUI = () => {
                   type="submit"
                   size="large"
                   color="blue"
-                  onClick={() => null}
+                  onClick={() => setShow(true)}
                   className={styles.btn}
                 >
                   Confirm application
