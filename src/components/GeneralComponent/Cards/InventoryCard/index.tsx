@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
+import { ViewRoomDetails } from "components/GeneralComponent/Modals";
 
 interface InventoryCardProps {
   status?: string;
@@ -12,9 +13,11 @@ const InventoryCard: React.FC<InventoryCardProps> = ({
   room,
   noOfresidents,
 }) => {
+  const [show, setShow] = useState(false);
   return (
     <>
-      <div className={styles.con}>
+      <ViewRoomDetails show={show} closeModal={() => setShow(!show)} />
+      <div onClick={() => setShow(true)} className={styles.con}>
         <div className={styles.item}>
           <h5>{status}</h5>
         </div>
