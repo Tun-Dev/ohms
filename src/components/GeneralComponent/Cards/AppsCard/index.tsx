@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { truncateString } from "utils";
 import styles from "./styles.module.scss";
 import { AppsCardData } from "./data";
+import { ViewApplicationDetails } from "components/GeneralComponent/Modals";
 
 interface AppsCardProps {
   status?: string;
@@ -19,6 +20,7 @@ const AppsCard: React.FC<AppsCardProps> = ({
   date,
 }) => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [show, setShow] = useState(false);
 
   const handleWindowResize = useCallback(() => {
     setWindowSize(window.innerWidth);
@@ -37,7 +39,8 @@ const AppsCard: React.FC<AppsCardProps> = ({
 
   return (
     <>
-      <div className={styles.con}>
+      <ViewApplicationDetails show={show} closeModal={() => setShow(!show)} />
+      <div onClick={() => setShow(true)} className={styles.con}>
         <div className={styles.item}>
           <div
             className={`${styles.status} ${

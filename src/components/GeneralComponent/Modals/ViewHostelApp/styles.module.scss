@@ -1,0 +1,142 @@
+.mymodal {
+  width: 600px;
+  max-width: none;
+}
+
+.con {
+  //   border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  font-family: "Mabry";
+  align-items: center;
+
+  .top {
+    margin-top: 32px;
+    margin-bottom: 24px;
+    display: flex;
+    position: relative;
+    // align-items: center;
+    justify-content: center;
+    text-align: center;
+    // border: 1px solid blue;
+    width: 95%;
+
+    &__words {
+      h4 {
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+      }
+
+      h5 {
+        font-size: 1.2rem;
+        color: #5f6368;
+      }
+    }
+
+    &__close {
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+    }
+  }
+
+  .mid {
+    display: flex;
+    flex-direction: column;
+    // border: 1px solid purple;
+    width: 95%;
+    margin-bottom: 32px;
+    // align-items: end;
+
+    &__top {
+      img {
+        margin-bottom: 8px;
+      }
+      h4 {
+        display: flex;
+        align-items: baseline;
+        // justify-content: end;
+        font-size: 16px;
+        color: #32373d;
+        margin-bottom: 8px;
+
+        h5 {
+          font-size: 1.2rem;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    &__down {
+      margin-top: 24px;
+
+      .header {
+        margin-bottom: 10px;
+        h4 {
+          font-size: 1.4rem;
+          color: #32373d;
+        }
+      }
+
+      .showboxCon {
+        // border: 1px solid green;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .showbox {
+          width: 255px;
+          height: 127px;
+          border: 1px solid #d0d5dd;
+          border-radius: 8px;
+          display: flex;
+          align-items: flex-end;
+          margin-bottom: 20px;
+
+          .inner {
+            border: 1px solid #d0d5dd;
+            border-radius: 0px 0px 8px 8px;
+            height: 42px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+            .info {
+              width: 90%;
+              display: flex;
+              justify-content: space-between;
+              margin: 0 auto;
+
+              h4 {
+                font-size: 1.4rem;
+                color: #32373d;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .down {
+    // border: 1px solid black;
+    width: 70%;
+    align-self: flex-end;
+    margin-right: 3%;
+    margin-bottom: 20px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+
+      .btn1 {
+        font-weight: 400;
+      }
+
+      .btn2 {
+        font-weight: 400;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
