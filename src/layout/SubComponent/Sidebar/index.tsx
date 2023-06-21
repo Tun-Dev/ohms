@@ -10,7 +10,10 @@ import {
   HotelSlipIcon,
 } from "assets";
 import { routes } from "utils";
+import { logout } from "features/auth/authSlice";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { AppDispatch } from "services/store";
 
 const adminMenuItems = [
   { name: "Dashboard", href: routes.admindashboard, src: <DashboardIcon /> },
@@ -47,6 +50,14 @@ const Sidebar = () => {
       setBorder(true);
     }
   }, []);
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const LogOut = () => {
+    dispatch(logout());
+    navigate("/admin");
+  };
+
   return (
     <>
       <div className={`${styles.sidebar}  ${border ? styles.border : ""}`}>
@@ -119,7 +130,7 @@ const Sidebar = () => {
               onClick={() => {
                 // localStorage.removeItem("token");
                 if (window.location.pathname.startsWith("/admin")) {
-                  navigate("/admin");
+                  LogOut();
                 } else {
                   navigate("/");
                 }

@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navbar, Sidebar } from "layout/SubComponent";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styles from "./styles.module.scss";
+import { RootState } from "services/store";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
 }
 
 const AuthLayout = () => {
+  const { authRole, authToken } = useSelector((state: RootState) => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authRole !== "admin" || !authToken) {
+      navigate("/admin");
+    }
+  }, [navigate, authRole]);
   return (
     <>
       <div className={styles.body}>
@@ -40,6 +50,14 @@ const AuthLayout = () => {
 };
 
 const UserAuthLayout = () => {
+  const { authRole, authToken } = useSelector((state: RootState) => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authRole !== "user" || !authToken) {
+      navigate("/");
+    }
+  }, [navigate, authRole]);
   return (
     <>
       <div className={styles.userbody}>

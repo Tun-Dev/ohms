@@ -19,6 +19,8 @@ import {
 } from "pages";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import store from "services/store";
+import { Provider } from "react-redux";
 import "./index.scss";
 
 // New React Router codes
@@ -58,7 +60,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    {/* // <App /> */}
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
