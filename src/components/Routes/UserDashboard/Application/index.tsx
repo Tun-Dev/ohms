@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import { UploadIcon } from "assets";
 import { facultyValues, levelValues } from "./formData";
+import { DocumentIcon } from "assets";
 import { Button } from "components/GeneralComponent";
+// import { useForm } from "react-hook-form";
 // import { Button } from "react-bootstrap";
 
+const FileItem = () => {
+  return (
+    <>
+      <div className={styles.fileitem}>
+        <div className={styles.left}>
+          <DocumentIcon />
+        </div>
+        <div className={styles.right}>
+          <h4>Testing.png</h4>
+          <h5>2.4mb</h5>
+        </div>
+      </div>
+    </>
+  );
+};
+
 const UserApplicationUI = () => {
-  const { handleSubmit, setValue, control, watch, reset } = useForm();
+  const [paymentSlip, setPaymentSlip] = useState([]);
+  const [lawyerLetter, setLawyerLetter] = useState([]);
+  const [wapicReceipt, setWapicReceipt] = useState([]);
+  const [lagmobileReceipt, setLagmobileReceipt] = useState([]);
+  const { handleSubmit, setValue, control, watch, reset, register } = useForm();
+
+  const submitApp = (data: any) => {
+    console.log(data);
+  };
   return (
     <>
       <div className={styles.con}>
         <div className={styles.con__wrapper}>
-          <form action="">
+          <form onSubmit={handleSubmit(submitApp)}>
             <div className={styles.con__wrapper__info}>
               <div className={styles.header}>
                 <h5>User information</h5>
@@ -21,16 +47,16 @@ const UserApplicationUI = () => {
               <div className={styles.wordsInput}>
                 <div className={styles.input}>
                   <label htmlFor="name">Surname</label>
-                  <input type="text" name="name" id="name" />
+                  <input type="text" id="name" {...register("surname")} />
                 </div>
                 <div className={styles.inputgroups}>
                   <div className={styles.input}>
                     <label htmlFor="name">First name</label>
-                    <input type="text" name="name" id="name" />
+                    <input type="text" id="name" {...register("firstName")} />
                   </div>
                   <div className={styles.input}>
                     <label htmlFor="name">Other names</label>
-                    <input type="text" name="name" id="name" />
+                    <input type="text" id="name" {...register("lastName")} />
                   </div>
                 </div>
                 <div className={styles.input}>
@@ -63,13 +89,13 @@ const UserApplicationUI = () => {
                 </div>
                 <div className={styles.input}>
                   <label htmlFor="name">Department</label>
-                  <input type="text" name="name" id="name" />
+                  <input type="text" id="name" {...register("department")} />
                 </div>
                 <div className={styles.inputgroups}>
                   <div className={styles.input}>
                     <label htmlFor="name">Level</label>
                     <Controller
-                      name="faculty"
+                      name="level"
                       control={control}
                       rules={{ required: true }}
                       render={({ field: { value, onChange, onBlur } }) => {
@@ -95,21 +121,25 @@ const UserApplicationUI = () => {
                     />
                   </div>
                   <div className={styles.input}>
-                    <label htmlFor="name">Hostel</label>
+                    <label htmlFor="name">Hostel Room No.</label>
                     <input type="text" name="name" id="name" />
                   </div>
                 </div>
-                <div className={styles.radiogroups}>
+                {/* <div className={styles.radiogroups}>
                   <h5>Gender</h5>
                   <div className={styles.input__radio}>
-                    <input type="radio" value="Male" name="male" />
+                    <input
+                      type="radio"
+                      value="Male"
+                      {...register("male")}
+                    />
                     <label htmlFor="male">Male</label>
                   </div>
                   <div className={styles.input__radio}>
                     <input type="radio" value="Male" name="male" />
                     <label htmlFor="male">Female</label>
                   </div>
-                </div>
+                </div> */}
                 <div className={styles.clear}>
                   <Button
                     color="transparent"
@@ -149,6 +179,7 @@ const UserApplicationUI = () => {
                         <p>PDF (max. 2MB)</p>
                       </Button>
                     </div>
+                    <FileItem />
                   </div>
                   <div className={styles.file}>
                     <h5>Signed letter by lawyer</h5>

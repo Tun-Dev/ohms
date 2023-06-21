@@ -232,6 +232,36 @@
   }
 }
 
+.fileitem {
+  margin-top: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  border-radius: 8px;
+
+  .left {
+    width: 20%;
+    // border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .right {
+    width: 80%;
+    // border: 1px solid red;
+    padding: 10px 0px;
+
+    h4 {
+      margin-top: 0;
+    }
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .con {
     &__wrapper {
