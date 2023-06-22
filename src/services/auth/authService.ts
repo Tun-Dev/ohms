@@ -5,7 +5,7 @@ export const adminApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://ohms-api.fly.dev",
     prepareHeaders: (headers, {}) => {
-      const token = localStorage.getItem("adminTokenOHMS");
+      const token = localStorage.getItem("tokenOHMS");
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
         return headers;
@@ -19,7 +19,26 @@ export const adminApi = createApi({
         method: "GET",
       }),
     }),
+    addComplaint: build.mutation({
+      query: ({ data }) => ({
+        url: "/complaint",
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    // For Admins
+    getApplications: build.query<void, void>({
+      query: () => ({
+        url: "/application/",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetDetailsQuery } = adminApi;
+export const {
+  useGetDetailsQuery,
+  useAddComplaintMutation,
+  useGetApplicationsQuery,
+} = adminApi;

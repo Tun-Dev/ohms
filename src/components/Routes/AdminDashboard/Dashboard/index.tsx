@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { AdminDashCard, AppsCard } from "components/GeneralComponent";
 import { RoomsIcon, BdAvailableIcon, BdTakenIcon } from "assets";
+import { useGetApplicationsQuery } from "services/auth/authService";
 import styles from "./styles.module.scss";
 import { AppsCardData } from "components/GeneralComponent/Cards/AppsCard/data";
 
 const AdminDashboardUI = () => {
+  const { data: allApplications } = useGetApplicationsQuery();
+
+  const allApplicationsBucket: any = allApplications || [];
+
+  console.log(allApplicationsBucket);
+
+  const extractedData = useMemo(() => {
+    const filteredData = allApplicationsBucket.data;
+    return filteredData;
+  }, [allApplications]);
+
   return (
     <>
       <div className={styles.con}>
@@ -51,16 +63,16 @@ const AdminDashboardUI = () => {
                   </div>
                 </div>
                 <div className={styles.apps}>
-                  {AppsCardData.length > 0 &&
-                    AppsCardData.map((item, index) => {
+                  {extractedData &&
+                    extractedData.map((item: any, index: number) => {
                       return (
                         <AppsCard
                           key={index}
                           status={item.status}
-                          name={item.name}
+                          name={`${item.firstname} ${item.lastname} ${item.othername}`}
                           faculty={item.faculty}
-                          dept={item.dept}
-                          date={item.date}
+                          dept={item.department}
+                          date={item.createdAt}
                         />
                       );
                     })}

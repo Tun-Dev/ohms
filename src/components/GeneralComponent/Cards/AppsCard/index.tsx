@@ -33,6 +33,8 @@ const AppsCard: React.FC<AppsCardProps> = ({
     };
   }, [handleWindowResize]);
 
+  const finaldate: Date = new Date();
+  const formattedDateString: string = finaldate.toLocaleDateString();
   // useEffect(() => {
   //   console.log(window.innerWidth);
   // }, [window.innerWidth]);
@@ -44,19 +46,23 @@ const AppsCard: React.FC<AppsCardProps> = ({
         <div className={styles.item}>
           <div
             className={`${styles.status} ${
-              status === "approved"
+              status === "'ACCEPTED'"
                 ? styles.approved
-                : status === "pending"
+                : status === "PENDING"
                 ? styles.pending
-                : status === "rejected"
+                : status === "REJECTED"
                 ? styles.rejected
                 : ""
             }`}
           >
             <div className={styles.dot}></div>
             <h5>
-              {status?.charAt(0).toUpperCase()}
-              {status?.slice(1)}
+              {status === "'ACCEPTED'"
+                ? "Accepted"
+                : status?.charAt(0).toUpperCase()}
+              {status === "'ACCEPTED'"
+                ? ""
+                : status?.slice(1).toLocaleLowerCase()}
             </h5>
           </div>
         </div>
@@ -70,7 +76,7 @@ const AppsCard: React.FC<AppsCardProps> = ({
           <h4>{dept}</h4>
         </div>
         <div className={styles.item}>
-          <h4>{date}</h4>
+          <h4>{formattedDateString}</h4>
         </div>
       </div>
     </>

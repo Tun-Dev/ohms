@@ -1,6 +1,6 @@
 import { createAsyncThunk, SerializedError } from "@reduxjs/toolkit";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { toast } from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 
 const url = "https://ohms-api.fly.dev";
 
@@ -62,7 +62,7 @@ export const authLogin = createAsyncThunk<typeDataAdmin, LoginCredentialsAdmin>(
       return data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        toast.error(error.response?.data);
+        // toast.error(error.response?.data);
         if (error.response && error.response.data.message) {
           return rejectWithValue(error.response.data.message);
         }

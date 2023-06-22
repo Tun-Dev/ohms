@@ -1,4 +1,5 @@
 import React from "react";
+// import { Preview, print } from "react-html2pdf";
 import { CustomPage } from "components/GeneralComponent";
 import { NoApplicationIcon } from "assets";
 import styles from "./styles.module.scss";

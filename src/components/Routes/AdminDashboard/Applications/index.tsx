@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import DatePicker from "react-datepicker";
 import Select from "react-select";
 import { CalendarIcon } from "assets";
 import styles from "./styles.module.scss";
 import { AppsCard } from "components/GeneralComponent";
+import { useGetApplicationsQuery } from "services/auth/authService";
 import { AppsCardData } from "components/GeneralComponent";
 
 const typeOptions = [
@@ -16,6 +17,18 @@ const typeOptions = [
 const AdminApplicationUI = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+
+  const { data: allApplications } = useGetApplicationsQuery();
+
+  const allApplicationsBucket: any = allApplications || [];
+
+  console.log(allApplicationsBucket);
+
+  const extractedData = useMemo(() => {
+    const filteredData = allApplicationsBucket.data;
+    return filteredData;
+  }, [allApplications]);
+
   return (
     <>
       <div className={styles.con}>
@@ -82,19 +95,21 @@ const AdminApplicationUI = () => {
                   </div>
                 </div>
                 <div className={styles.apps}>
-                  {AppsCardData.length > 0 &&
-                    AppsCardData.slice(0, 13).map((item, index) => {
-                      return (
-                        <AppsCard
-                          key={index}
-                          status={item.status}
-                          name={item.name}
-                          faculty={item.faculty}
-                          dept={item.dept}
-                          date={item.date}
-                        />
-                      );
-                    })}
+                  {extractedData &&
+                    extractedData
+                      .slice(0, 13)
+                      .map((item: any, index: number) => {
+                        return (
+                          <AppsCard
+                            key={index}
+                            status={item.status}
+                            name={`${item.firstname} ${item.lastname} ${item.othername}`}
+                            faculty={item.faculty}
+                            dept={item.department}
+                            date={item.createdAt}
+                          />
+                        );
+                      })}
                 </div>
               </div>
             </div>

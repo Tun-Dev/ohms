@@ -57,6 +57,12 @@
   }
 }
 
+.toast {
+  font-size: 1.6rem;
+  color: black;
+  font-family: "Mabry";
+}
+
 @media only screen and (max-width: 800px) {
   .con {
     min-height: calc(100vh - 100px);
