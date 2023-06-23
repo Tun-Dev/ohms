@@ -34,6 +34,18 @@ export const adminApi = createApi({
         method: "GET",
       }),
     }),
+    getAllCompliants: build.query<void, void>({
+      query: () => ({
+        url: "/complaint",
+        method: "GET",
+      }),
+    }),
+    getSpecificApplicationDetail: build.query({
+      query: ({ id }) => ({
+        url: `/application/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -41,4 +53,6 @@ export const {
   useGetDetailsQuery,
   useAddComplaintMutation,
   useGetApplicationsQuery,
+  useGetAllCompliantsQuery,
+  useGetSpecificApplicationDetailQuery,
 } = adminApi;

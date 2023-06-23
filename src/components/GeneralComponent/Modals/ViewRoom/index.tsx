@@ -73,8 +73,9 @@ const ViewRoomDetails: React.FC<ViewRoomProps> = ({ show, closeModal }) => {
                   <div className={styles.header}>Department</div>
                 </div>
                 <div className={styles.body}>
-                  {data.map((item) => (
+                  {data.map((item, index) => (
                     <BodyLine
+                      key={index}
                       name={item.name}
                       level={item.level}
                       dept={item.dept}

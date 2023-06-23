@@ -10,6 +10,7 @@ interface AppsCardProps {
   faculty?: string;
   dept?: string;
   date?: string;
+  id?: string;
 }
 
 const AppsCard: React.FC<AppsCardProps> = ({
@@ -18,6 +19,7 @@ const AppsCard: React.FC<AppsCardProps> = ({
   faculty,
   dept,
   date,
+  id,
 }) => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [show, setShow] = useState(false);
@@ -33,15 +35,30 @@ const AppsCard: React.FC<AppsCardProps> = ({
     };
   }, [handleWindowResize]);
 
-  const finaldate: Date = new Date();
-  const formattedDateString: string = finaldate.toLocaleDateString();
+  const datestring: string = date || "";
+  const finaldate: Date = new Date(datestring);
+  const options: Intl.DateTimeFormatOptions = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  };
+  const formattedDateString: string = finaldate.toLocaleDateString(
+    undefined,
+    options
+  );
+
+  // console.log(id);
   // useEffect(() => {
   //   console.log(window.innerWidth);
   // }, [window.innerWidth]);
 
   return (
     <>
-      <ViewApplicationDetails show={show} closeModal={() => setShow(!show)} />
+      <ViewApplicationDetails
+        id={id}
+        show={show}
+        closeModal={() => setShow(!show)}
+      />
       <div onClick={() => setShow(true)} className={styles.con}>
         <div className={styles.item}>
           <div

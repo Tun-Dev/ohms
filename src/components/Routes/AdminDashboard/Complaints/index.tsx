@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import { Avi1, Avi2, Avi3, Avi4, CalendarIcon } from "assets";
 import Select from "react-select";
+import { useGetAllCompliantsQuery } from "services/auth/authService";
 import styles from "./styles.module.scss";
 import { CompsCard } from "components/GeneralComponent";
 
@@ -50,6 +51,13 @@ const compsData = [
 const AdminComplaintsUI = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+
+  const { data: allCompliants } = useGetAllCompliantsQuery();
+
+  const allCompliantsBucket: any = allCompliants || [];
+
+  console.log(allCompliantsBucket.data);
+
   return (
     <>
       <div className={styles.con}>
@@ -96,16 +104,17 @@ const AdminComplaintsUI = () => {
             </div>
           </div>
           <div className={styles.con__wrapper__bottom}>
-            {compsData.length > 0 &&
-              compsData.map((data, index) => {
+            {allCompliantsBucket.data &&
+              allCompliantsBucket.data.map((data: any, index: number) => {
                 return (
                   <CompsCard
                     key={index}
+                    title={data.title}
                     name={data.name}
-                    date={data.date}
-                    complaint={data.complaint}
+                    date={data.createdAt}
+                    complaint={data.description}
                     read={data.read}
-                    img={data.img}
+                    img={Avi1}
                   />
                 );
               })}

@@ -102,6 +102,7 @@ const AdminApplicationUI = () => {
                         return (
                           <AppsCard
                             key={index}
+                            id={item._id}
                             status={item.status}
                             name={`${item.firstname} ${item.lastname} ${item.othername}`}
                             faculty={item.faculty}

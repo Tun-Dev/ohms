@@ -8,6 +8,7 @@ interface CompsCardProps {
   complaint?: string;
   read?: boolean;
   img?: string;
+  title?: string;
 }
 
 const CompsCard: React.FC<CompsCardProps> = ({
@@ -16,7 +17,20 @@ const CompsCard: React.FC<CompsCardProps> = ({
   complaint,
   read,
   img,
+  title,
 }) => {
+  const datestring: string = date || "";
+  const finaldate: Date = new Date(datestring);
+  const options: Intl.DateTimeFormatOptions = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  };
+  const formattedDateString: string = finaldate.toLocaleDateString(
+    undefined,
+    options
+  );
+
   return (
     <>
       <div className={styles.comps}>
@@ -27,11 +41,12 @@ const CompsCard: React.FC<CompsCardProps> = ({
             </div>
             <div className={styles.title}>
               <h4>{name}</h4>
-              <h5>{date}</h5>
+              <h5>{formattedDateString}</h5>
             </div>
           </div>
           <div className={styles.comps__wrapper__bottom}>
             <div className={styles.left}>
+              <h4>{title}</h4>
               <h5>{complaint}</h5>
             </div>
             <div className={styles.right}>
