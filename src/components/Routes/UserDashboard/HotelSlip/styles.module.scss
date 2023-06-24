@@ -3,4 +3,286 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid red;
+}
+
+.slipcontainer {
+  min-height: calc(100vh - 100px);
+  // border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: "Mabry";
+
+  .btn {
+    font-weight: 400;
+    margin-top: 70px;
+  }
+
+  .slip {
+    width: 1158px;
+    height: 540px;
+    border: 2px solid #5f6368;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    // top of slip
+    &__top {
+      // border: 1px solid red;
+      display: flex;
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 30px;
+
+      &__left {
+        width: 20%;
+        // border: 1px solid blue;
+        display: flex;
+        justify-content: center;
+      }
+
+      &__mid {
+        width: 60%;
+        // border: 1px solid blue;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+
+        .wordtop {
+          h4 {
+            font-weight: 900;
+            font-size: 3.2rem;
+            color: #32373d;
+            letter-spacing: 0.16rem;
+          }
+
+          h5 {
+            margin-top: 3px;
+            color: #32373d;
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 0.12rem;
+          }
+        }
+
+        .worddown {
+          h4 {
+            color: #1d4ed8;
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 0.11rem;
+          }
+        }
+      }
+
+      &__right {
+        width: 20%;
+        // border: 1px solid blue;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    // mid of slip
+    &__mid {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      margin: 0 auto;
+
+      &__top {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .write {
+          // border: 1px solid red;
+          display: flex;
+          margin-bottom: 28px;
+          align-items: end;
+
+          h4 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: 0.08rem;
+            width: 14.1rem;
+          }
+
+          .res {
+            border-bottom: 1px dotted #32373d;
+            width: calc(100% - 14.1rem);
+            height: 30px;
+            // border: 1px solid blue;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+
+            h5 {
+              font-size: 1.6rem;
+              font-weight: 500;
+              letter-spacing: 0.08rem;
+              margin-bottom: 3px;
+            }
+          }
+          &:nth-child(2) {
+            h4 {
+              width: 21.2rem;
+            }
+          }
+        }
+
+        .write2 {
+          display: flex;
+          width: 100%;
+          margin-bottom: 10px;
+
+          .item {
+            width: 23%;
+            display: flex;
+            align-items: end;
+            h4 {
+              font-size: 1.6rem;
+              font-weight: 500;
+              letter-spacing: 0.08rem;
+            }
+
+            .res {
+              border-bottom: 1px dotted #32373d;
+              width: calc(100% - 14.1rem);
+              height: 20px;
+              // border: 1px solid blue;
+              width: 100%;
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: end;
+
+              h5 {
+                font-size: 1.6rem;
+                font-weight: 500;
+                letter-spacing: 0.08rem;
+                margin-bottom: 3px;
+              }
+            }
+
+            &:nth-child(1) {
+              width: 37%;
+              h4 {
+                width: 23rem;
+              }
+
+              .res {
+                width: calc(100% - 22rem);
+              }
+            }
+            &:nth-child(2) {
+              // width: 37%;
+              h4 {
+                width: 7.5rem;
+              }
+
+              .res {
+                width: calc(100% - 7.5rem);
+              }
+            }
+            &:nth-child(3) {
+              // width: 37%;
+              h4 {
+                width: 9.2rem;
+              }
+
+              .res {
+                width: calc(100% - 9.1rem);
+              }
+            }
+            &:nth-child(4) {
+              // width: 37%;
+              h4 {
+                width: 9.8rem;
+              }
+
+              .res {
+                width: calc(100% - 9.8rem);
+              }
+            }
+          }
+        }
+      }
+
+      &__bot {
+        // border: 1px solid red;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        .sign {
+          // border: 1px solid blue;
+          width: 50%;
+          display: flex;
+
+          .inner {
+            // border: 1px solid red;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            // justify-content: center;
+
+            .write {
+              width: 280px;
+              height: 62px;
+              border-bottom: 1px solid #32373d;
+              margin-bottom: 10px;
+            }
+
+            .words {
+              h4 {
+                font-size: 1.6rem;
+                font-weight: 500;
+                line-height: 2rem;
+                letter-spacing: 0.08rem;
+              }
+
+              h5 {
+                font-size: 1.6rem;
+                font-style: italic;
+                line-height: 2rem;
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+
+    // bottom of slip
+    &__bottom {
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 15px;
+      margin-bottom: 20px;
+
+      h4 {
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 2rem;
+        letter-spacing: 0.08rem;
+        color: #5f6368;
+
+        span {
+          font-weight: 500;
+        }
+      }
+    }
+  }
 }

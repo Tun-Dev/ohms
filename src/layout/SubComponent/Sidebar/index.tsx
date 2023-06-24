@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import {
   OHMSLogoADIcon,
+  OHMSLogoIcon,
   DashboardIcon,
   ApplicationIcon,
   ComplaintsIcon,
@@ -67,7 +68,11 @@ const Sidebar = () => {
     <>
       <div className={`${styles.sidebar}  ${border ? styles.border : ""}`}>
         <div className={styles.sidebar__top}>
-          <OHMSLogoADIcon />
+          {window.location.pathname.startsWith("/admin") === true ? (
+            <OHMSLogoADIcon />
+          ) : (
+            <OHMSLogoIcon />
+          )}
         </div>
         <div className={styles.sidebar__linkscon}>
           {border
