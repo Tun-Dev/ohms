@@ -78,7 +78,7 @@ const UserHostelSlipUI = () => {
           btnText="Start application"
         />
       </div> */}
-      {extractedData && extractedData.note === "No application" ? (
+      {extractedData && extractedData?.note === "No application" ? (
         <>
           <div className={styles.con}>
             <CustomPage

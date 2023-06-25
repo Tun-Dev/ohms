@@ -293,7 +293,7 @@ const UserApplicationUI = () => {
         data={finalData}
       />
       <div className={styles.con}>
-        {extractedData && extractedData.note === "No application" ? (
+        {extractedData && extractedData?.note === "No application" ? (
           <>
             <div className={styles.con__wrapper}>
               <form onSubmit={handleSubmit(submitApp)}>
@@ -567,7 +567,7 @@ const UserApplicationUI = () => {
               </form>
             </div>
           </>
-        ) : extractedData.note === "Approved" || "approved" ? (
+        ) : extractedData?.note === "Approved" || "approved" ? (
           <>
             <CustomPage
               Svg={<ConfirmationApplicationIcon />}
