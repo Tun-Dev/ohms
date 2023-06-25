@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Select from "react-select";
 import styles from "./styles.module.scss";
+import { useGetRoomsQuery } from "services/auth/authService";
 import { InventoryData } from "./data";
 import { InventoryCard } from "components/GeneralComponent";
 
@@ -12,6 +13,19 @@ const typeOptions = [
 ];
 
 const AdminInventoryUI = () => {
+  const { data: allRooms, error } = useGetRoomsQuery();
+
+  console.log(allRooms);
+
+  const allRoomsBucket: any = allRooms || [];
+
+  // console.log(allRoomsBucket);
+
+  const extractedData = useMemo(() => {
+    const filteredData = allRoomsBucket.data;
+    return filteredData;
+  }, [allRooms]);
+
   return (
     <>
       <div className={styles.con}>
@@ -43,17 +57,20 @@ const AdminInventoryUI = () => {
                   </div>
                 </div>
                 <div className={styles.apps}>
-                  {InventoryData.length > 0 &&
-                    InventoryData.slice(0, 13).map((item, index) => {
-                      return (
-                        <InventoryCard
-                          key={index}
-                          status={item.status}
-                          room={item.roomNumber}
-                          noOfresidents={item.noOfResidents}
-                        />
-                      );
-                    })}
+                  {extractedData &&
+                    extractedData
+                      .slice(0, 13)
+                      .map((item: any, index: number) => {
+                        return (
+                          <InventoryCard
+                            id={item._id}
+                            key={index}
+                            status={item.roomStatus}
+                            room={item.roomNumber}
+                            noOfresidents={item.roomType}
+                          />
+                        );
+                      })}
                 </div>
               </div>
             </div>

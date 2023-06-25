@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./styles.module.scss";
 import { CloseIcon } from "assets";
+import { useGetSpecificRoomQuery } from "services/auth/authService";
 import { Modal } from "react-bootstrap";
 
 interface ViewRoomProps {
+  id?: any;
   show: boolean;
   closeModal: () => void;
+
   // data: Array<any>;
 }
 
@@ -40,7 +43,27 @@ const BodyLine: React.FC<bodyTypes> = ({ name, level, dept }) => (
   </>
 );
 
-const ViewRoomDetails: React.FC<ViewRoomProps> = ({ show, closeModal }) => {
+const ViewRoomDetails: React.FC<ViewRoomProps> = ({ show, closeModal, id }) => {
+  console.log(id);
+
+  const { data: roomDetails } = useGetSpecificRoomQuery({ id: id });
+
+  const roomDetailsBucket: any = roomDetails || [];
+
+  console.log(roomDetails);
+
+  const extractedData = useMemo(() => {
+    const filteredData = roomDetailsBucket.data;
+    return filteredData;
+  }, [roomDetails]);
+
+  const extractedResidents = useMemo(() => {
+    const filteredData = roomDetailsBucket.data?.residents;
+    return filteredData;
+  }, [roomDetails]);
+
+  console.log(extractedResidents);
+
   return (
     <>
       <Modal
@@ -55,8 +78,8 @@ const ViewRoomDetails: React.FC<ViewRoomProps> = ({ show, closeModal }) => {
           <div className={styles.con}>
             <div className={styles.top}>
               <div className={styles.top__words}>
-                <h4>A007</h4>
-                <h5>8-man room</h5>
+                <h4>{extractedData && extractedData.roomNumber}</h4>
+                <h5>{extractedData && extractedData.roomType}-man room</h5>
               </div>
               <div onClick={() => closeModal()} className={styles.top__close}>
                 <CloseIcon />
@@ -73,14 +96,15 @@ const ViewRoomDetails: React.FC<ViewRoomProps> = ({ show, closeModal }) => {
                   <div className={styles.header}>Department</div>
                 </div>
                 <div className={styles.body}>
-                  {data.map((item, index) => (
+                  {extractedData === 0 ? <h4>No residents</h4> : null}
+                  {/* {data.map((item, index) => (
                     <BodyLine
                       key={index}
                       name={item.name}
                       level={item.level}
                       dept={item.dept}
                     />
-                  ))}
+                  ))} */}
                 </div>
               </div>
             </div>

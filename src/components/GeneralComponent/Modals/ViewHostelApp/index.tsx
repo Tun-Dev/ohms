@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import { CloseIcon, AVI5, DownloadIcon } from "assets";
 import { Modal } from "react-bootstrap";
@@ -8,7 +8,7 @@ import { useGetSpecificApplicationDetailQuery } from "services/auth/authService"
 interface ViewAppProps {
   show: boolean;
   closeModal: () => void;
-  id?: string;
+  id?: any;
   // data: Array<any>;
 }
 
@@ -17,13 +17,13 @@ const ViewApplicationDetails: React.FC<ViewAppProps> = ({
   closeModal,
   id,
 }) => {
-  console.log(id);
+  // console.log(id);
 
   const { data: specificApplication, error } =
-    useGetSpecificApplicationDetailQuery(id);
+    useGetSpecificApplicationDetailQuery({ id: id });
 
   console.log(specificApplication);
-  console.log(error);
+  // console.log(error);
 
   return (
     <>

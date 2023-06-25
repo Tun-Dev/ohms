@@ -108,7 +108,7 @@ const Navbar = () => {
             {/* For users */}
             {window.location.pathname === routes.userdashboard ? (
               <>
-                <h4>Welcome Dahoma</h4>
+                <h4>Welcome</h4>
                 <h5>Here’s what we have for you today</h5>
               </>
             ) : window.location.pathname === routes.userapplication ? (

@@ -1,5 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+interface ApplicationDetail {
+  // Define the properties and their types based on the data structure
+  id: any;
+  // ...
+  // Other properties
+}
+
 export const adminApi = createApi({
   reducerPath: "adminApi",
   baseQuery: fetchBaseQuery({
@@ -26,6 +33,48 @@ export const adminApi = createApi({
         body: data,
       }),
     }),
+    getUserProfile: build.query({
+      query: ({ id }) => ({
+        url: `/user/${id}/profile`,
+        method: "GET",
+      }),
+    }),
+    submitApplication: build.mutation({
+      query: ({ data }) => ({
+        url: "/application/create",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    uploadLetter: build.mutation<{}, FormData>({
+      query: (data) => ({
+        url: "/upload/letter",
+        headers: { "Content-Type": "form-data" },
+        method: "POST",
+        body: data,
+      }),
+    }),
+    uploadWapic: build.mutation({
+      query: ({ data }) => ({
+        url: "/upload/wapic",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    uploadHostelSlip: build.mutation({
+      query: ({ data }) => ({
+        url: "/upload/hostelSlip",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    uploadLagmobile: build.mutation({
+      query: ({ data }) => ({
+        url: "/upload/lagmobile",
+        method: "POST",
+        body: data,
+      }),
+    }),
 
     // For Admins
     getApplications: build.query<void, void>({
@@ -40,9 +89,27 @@ export const adminApi = createApi({
         method: "GET",
       }),
     }),
-    getSpecificApplicationDetail: build.query({
+    getSpecificApplicationDetail: build.query<ApplicationDetail, { id: any }>({
       query: ({ id }) => ({
         url: `/application/${id}`,
+        method: "GET",
+      }),
+    }),
+    getRoomsInventory: build.query<void, void>({
+      query: () => ({
+        url: `/room/inventory`,
+        method: "GET",
+      }),
+    }),
+    getRooms: build.query<void, void>({
+      query: () => ({
+        url: `/room`,
+        method: "GET",
+      }),
+    }),
+    getSpecificRoom: build.query<ApplicationDetail, { id: any }>({
+      query: ({ id }) => ({
+        url: `/room/${id}`,
         method: "GET",
       }),
     }),
@@ -52,7 +119,17 @@ export const adminApi = createApi({
 export const {
   useGetDetailsQuery,
   useAddComplaintMutation,
+  useGetUserProfileQuery,
+  useSubmitApplicationMutation,
+  useUploadLetterMutation,
+  useUploadWapicMutation,
+  useUploadHostelSlipMutation,
+  useUploadLagmobileMutation,
+
   useGetApplicationsQuery,
   useGetAllCompliantsQuery,
   useGetSpecificApplicationDetailQuery,
+  useGetRoomsInventoryQuery,
+  useGetRoomsQuery,
+  useGetSpecificRoomQuery,
 } = adminApi;

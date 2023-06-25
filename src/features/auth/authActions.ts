@@ -58,6 +58,7 @@ export const authLogin = createAsyncThunk<typeDataAdmin, LoginCredentialsAdmin>(
       localStorage.setItem("tokenOHMS", data.data.token);
       localStorage.setItem("infoOHMS", JSON.stringify(data.data));
       localStorage.setItem("roleOHMS", data.data.role);
+      localStorage.setItem("idOHMS", data.data._id);
 
       return data;
     } catch (error) {

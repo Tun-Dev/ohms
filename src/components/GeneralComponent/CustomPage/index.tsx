@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import { Button } from "../Button";
+import { useNavigate } from "react-router-dom";
 
 interface CustomPageProps {
   header: string;
@@ -15,6 +16,7 @@ const CustomPage: React.FC<CustomPageProps> = ({
   Svg,
   btnText,
 }) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className={styles.con}>
@@ -25,7 +27,15 @@ const CustomPage: React.FC<CustomPageProps> = ({
           className={styles.btn}
           color="transparent"
           size="smallNBR"
-          onClick={() => null}
+          onClick={() => {
+            if (btnText === "Start application") {
+              navigate("/user/application");
+            }
+
+            if (btnText === "Lodge a complaint") {
+              navigate("/user/complaint");
+            }
+          }}
         >
           {btnText}
         </Button>

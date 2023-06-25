@@ -1,21 +1,32 @@
 import React, { useMemo } from "react";
 import { AdminDashCard, AppsCard } from "components/GeneralComponent";
 import { RoomsIcon, BdAvailableIcon, BdTakenIcon } from "assets";
-import { useGetApplicationsQuery } from "services/auth/authService";
+import {
+  useGetApplicationsQuery,
+  useGetRoomsInventoryQuery,
+} from "services/auth/authService";
 import styles from "./styles.module.scss";
 import { AppsCardData } from "components/GeneralComponent/Cards/AppsCard/data";
 
 const AdminDashboardUI = () => {
   const { data: allApplications } = useGetApplicationsQuery();
+  const { data: allRoomsInventory } = useGetRoomsInventoryQuery();
 
   const allApplicationsBucket: any = allApplications || [];
+  const allRoomsInventoryBucket: any = allRoomsInventory || [];
 
-  console.log(allApplicationsBucket);
+  // console.log(allApplicationsBucket);
+  console.log(allRoomsInventoryBucket);
 
   const extractedData = useMemo(() => {
     const filteredData = allApplicationsBucket.data;
     return filteredData;
   }, [allApplications]);
+
+  const extractedData2 = useMemo(() => {
+    const filteredData = allRoomsInventoryBucket.data;
+    return filteredData;
+  }, [allRoomsInventory]);
 
   return (
     <>
@@ -25,17 +36,17 @@ const AdminDashboardUI = () => {
             <AdminDashCard
               Svg={<RoomsIcon />}
               title="No of rooms available"
-              num="12"
+              num={extractedData2 && extractedData2.totalRoomsAvailable}
             />
             <AdminDashCard
               Svg={<BdAvailableIcon />}
               title="Bedspaces available"
-              num="2500"
+              num={extractedData2 && extractedData2.totalBedspacesAvailable}
             />
             <AdminDashCard
               Svg={<BdTakenIcon />}
               title="Bedspaces taken"
-              num="2345"
+              num="0"
             />
           </div>
           <div className={styles.con__wrapper__bottom}>

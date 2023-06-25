@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 // import { Preview, print } from "react-html2pdf";
 import { CustomPage } from "components/GeneralComponent";
 import { AVI5, NoApplicationIcon } from "assets";
@@ -7,7 +7,8 @@ import { Button } from "components/GeneralComponent";
 import styles from "./styles.module.scss";
 import html2canvas from "html2canvas";
 import jsPdf from "jspdf";
-
+import { useGetUserProfileQuery } from "services/auth/authService";
+// import { CustomPage } from "components/GeneralComponent";
 // import { jsPDF, jsPDFOptions } from "jspdf";
 
 // const options: jsPDFOptions = {
@@ -55,22 +56,16 @@ const UserHostelSlipUI = () => {
     });
   };
 
-  // const printHtmlToPdf = () => {
-  //   if (!htmlRef.current) {
-  //     return;
-  //   }
-  //   const doc = new jsPDF(options);
-  //   doc.setFontSize(12);
-  //   doc.html(htmlRef.current, {
-  //     html2canvas: {
-  //       scale: 0.2645,
-  //     },
-  //     margin: 10,
-  //     callback: function (doc) {
-  //       doc.save("html-to-pdf.pdf");
-  //     },
-  //   });
-  // };
+  const id = localStorage.getItem("idOHMS");
+  console.log(id);
+  const { data: userProfile, error } = useGetUserProfileQuery({ id: id });
+
+  const userProfileBucket: any = userProfile || [];
+
+  const extractedData = useMemo(() => {
+    const filteredData = userProfileBucket.data;
+    return filteredData;
+  }, [userProfileBucket]);
 
   return (
     <>
@@ -83,7 +78,20 @@ const UserHostelSlipUI = () => {
           btnText="Start application"
         />
       </div> */}
-      <div className={styles.slipcontainer}>
+      {extractedData && extractedData.note === "No application" ? (
+        <>
+          <div className={styles.con}>
+            <CustomPage
+              Svg={<NoApplicationIcon />}
+              header="Oops... You have no application yet"
+              desc="Hey Dahoma, you have not applied for any bedspace.
+          Go to the applications page and start the process now."
+              btnText="Start application"
+            />
+          </div>
+        </>
+      ) : null}
+      {/* <div className={styles.slipcontainer}>
         <div className={styles.slip} id="test">
           <div className={styles.slip__top}>
             <div className={styles.slip__top__left}>
@@ -182,7 +190,7 @@ const UserHostelSlipUI = () => {
         >
           Click to Print
         </Button>
-      </div>
+      </div> */}
 
       {/* <button id="print" onClick={printPDF}>
         Print

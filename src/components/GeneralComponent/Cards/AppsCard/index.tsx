@@ -65,7 +65,7 @@ const AppsCard: React.FC<AppsCardProps> = ({
             className={`${styles.status} ${
               status === "'ACCEPTED'"
                 ? styles.approved
-                : status === "PENDING"
+                : status === "PENDING" || "Pending"
                 ? styles.pending
                 : status === "REJECTED"
                 ? styles.rejected

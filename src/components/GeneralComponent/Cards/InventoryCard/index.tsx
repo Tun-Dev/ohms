@@ -6,18 +6,27 @@ interface InventoryCardProps {
   status?: string;
   room?: string;
   noOfresidents?: string;
+  id?: string;
 }
 
 const InventoryCard: React.FC<InventoryCardProps> = ({
   status,
   room,
   noOfresidents,
+  id,
 }) => {
   const [show, setShow] = useState(false);
+  const [data, setData] = useState("");
   return (
     <>
-      <ViewRoomDetails show={show} closeModal={() => setShow(!show)} />
-      <div onClick={() => setShow(true)} className={styles.con}>
+      <ViewRoomDetails id={id} show={show} closeModal={() => setShow(!show)} />
+      <div
+        onClick={() => {
+          setShow(true);
+          // setData(id);
+        }}
+        className={styles.con}
+      >
         <div className={styles.item}>
           <h5>{status}</h5>
         </div>
