@@ -20,7 +20,7 @@ const UserDashboardUI = () => {
     return filteredData;
   }, [userProfileBucket]);
 
-  console.log(userProfile.data);
+  console.log(userProfile?.data);
   console.log(error);
 
   return (
