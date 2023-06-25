@@ -16,7 +16,7 @@ const UserDashboardUI = () => {
   const userProfileBucket: any = userProfile || [];
 
   const extractedData = useMemo(() => {
-    const filteredData = userProfileBucket.data;
+    const filteredData = userProfileBucket?.data;
     return filteredData;
   }, [userProfileBucket]);
 

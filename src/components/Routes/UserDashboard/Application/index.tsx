@@ -274,7 +274,7 @@ const UserApplicationUI = () => {
   const userProfileBucket: any = userProfile || [];
 
   const extractedData = useMemo(() => {
-    const filteredData = userProfileBucket.data;
+    const filteredData = userProfileBucket?.data;
     // const filteredData = { note: "No application" };
     return filteredData;
   }, [userProfileBucket]);
