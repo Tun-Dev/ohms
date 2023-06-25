@@ -36,7 +36,7 @@ const UserDashboardUI = () => {
               btnText="Start application"
             />
           </>
-        ) : extractedData.nate === "Reviewing" || "reveiwing" ? (
+        ) : extractedData.note === "Reviewing" || "reveiwing" ? (
           <>
             <CustomPage
               Svg={<ReviewApplication />}
