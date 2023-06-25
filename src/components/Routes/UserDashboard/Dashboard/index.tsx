@@ -26,7 +26,7 @@ const UserDashboardUI = () => {
   return (
     <>
       <div className={styles.con}>
-        {extractedData && extractedData.note === "No application" ? (
+        {extractedData && extractedData?.note === "No application" ? (
           <>
             <CustomPage
               Svg={<NoApplicationIcon />}
@@ -36,7 +36,7 @@ const UserDashboardUI = () => {
               btnText="Start application"
             />
           </>
-        ) : extractedData.note === "Reviewing" || "reveiwing" ? (
+        ) : extractedData?.note === "Reviewing" || "reveiwing" ? (
           <>
             <CustomPage
               Svg={<ReviewApplication />}
@@ -46,7 +46,7 @@ const UserDashboardUI = () => {
               btnText="Lodge a complaint"
             />
           </>
-        ) : extractedData.note === "Approved" || "approved" ? (
+        ) : extractedData?.note === "Approved" || "approved" ? (
           <>
             <CustomPage
               Svg={<ConfirmationApplicationIcon />}
