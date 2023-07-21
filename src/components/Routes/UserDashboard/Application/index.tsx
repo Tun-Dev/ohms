@@ -14,12 +14,14 @@ import { truncateString } from "utils";
 import { ConfirmApplication } from "components/GeneralComponent";
 import { Button } from "components/GeneralComponent";
 import { CustomPage } from "components/GeneralComponent";
+import { useGetSpecificApplicationDetailQuery } from "services/auth/authService";
 // import { toast } from "react-toastify";
 import {
   useUploadLetterMutation,
   useGetUserProfileQuery,
 } from "services/auth/authService";
 import { Slide, ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 // import { useForm } from "react-hook-form";
 // import { Button } from "react-bootstrap";
 
@@ -85,162 +87,142 @@ const UserApplicationUI = () => {
     return formData;
   };
 
-  const uploadLetter = async () => {
-    if (lawyerLetter.length > 0) {
-      const formData = new FormData();
-      const test = paymentSlip[0][0] as Blob;
-      formData.append("file", paymentSlip[0][0] as Blob);
-      // const formData = fileToFormData(paymentSlip[0]);
-      // console.log(formData, typeof formData);
-
-      console.log(test, typeof test);
-      console.log(formData);
-
-      // await uploadLetterMutatuion(formData)
-      //   .unwrap()
-      //   .then((res) => {
-      //     console.log(res);
-      //     toast.success("letter uploaded succesfully.", {
-      //       position: toast.POSITION.TOP_RIGHT,
-      //       hideProgressBar: true,
-      //       autoClose: 3000,
-      //       transition: Slide,
-      //       className: styles.toast,
-      //     });
-      //   })
-      //   .catch((err) => {
-      //     toast.error(err.data.message);
-      //     console.log(err);
-      //   });
-    }
-  };
-
-  const uploadWapic = async () => {
-    if (wapicReceipt.length > 0) {
-      const formData = new FormData();
-      const test = paymentSlip[0][0] as Blob;
-      formData.append("file", paymentSlip[0][0] as Blob);
-      // const formData = fileToFormData(paymentSlip[0]);
-      // console.log(formData, typeof formData);
-
-      console.log(test, typeof test);
-      console.log(formData);
-
-      // await uploadLetterMutatuion(formData)
-      //   .unwrap()
-      //   .then((res) => {
-      //     console.log(res);
-      //     toast.success("letter uploaded succesfully.", {
-      //       position: toast.POSITION.TOP_RIGHT,
-      //       hideProgressBar: true,
-      //       autoClose: 3000,
-      //       transition: Slide,
-      //       className: styles.toast,
-      //     });
-      //   })
-      //   .catch((err) => {
-      //     toast.error(err.data.message);
-      //     console.log(err);
-      //   });
-    }
-  };
-
-  const uploadHostelSlip = async () => {
-    if (paymentSlip.length > 0) {
-      const formData = new FormData();
-      const test = paymentSlip[0][0] as Blob;
-      formData.append("file", paymentSlip[0][0] as Blob);
-      // const formData = fileToFormData(paymentSlip[0]);
-      // console.log(formData, typeof formData);
-
-      console.log(test, typeof test);
-      console.log(formData);
-
-      // await uploadLetterMutatuion(formData)
-      //   .unwrap()
-      //   .then((res) => {
-      //     console.log(res);
-      //     toast.success("letter uploaded succesfully.", {
-      //       position: toast.POSITION.TOP_RIGHT,
-      //       hideProgressBar: true,
-      //       autoClose: 3000,
-      //       transition: Slide,
-      //       className: styles.toast,
-      //     });
-      //   })
-      //   .catch((err) => {
-      //     toast.error(err.data.message);
-      //     console.log(err);
-      //   });
-    }
-  };
-
-  const uploadLagMobile = async () => {
-    if (lagmobileReceipt.length > 0) {
-      const formData = new FormData();
-      const test = paymentSlip[0][0] as Blob;
-      formData.append("file", paymentSlip[0][0] as Blob);
-      // const formData = fileToFormData(paymentSlip[0]);
-      // console.log(formData, typeof formData);
-
-      console.log(test, typeof test);
-      console.log(formData);
-
-      // await uploadLetterMutatuion(formData)
-      //   .unwrap()
-      //   .then((res) => {
-      //     console.log(res);
-      //     toast.success("letter uploaded succesfully.", {
-      //       position: toast.POSITION.TOP_RIGHT,
-      //       hideProgressBar: true,
-      //       autoClose: 3000,
-      //       transition: Slide,
-      //       className: styles.toast,
-      //     });
-      //   })
-      //   .catch((err) => {
-      //     toast.error(err.data.message);
-      //     console.log(err);
-      //   });
-    }
-  };
-
   const getSizeInMb = (bytes: any) => {
     const sizeInMb = bytes / 1048576;
     return sizeInMb.toFixed(1) + " MB";
   };
 
-  const handleFileChangePay = (
+  const token = localStorage.getItem("tokenOHMS");
+
+  const handleFileChangePay = async (
     event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    const file: File | any = event.target.files?.[0];
+  ) => {
+    const file: any = event.target.files?.[0];
+    console.log(file);
 
     setPaymentSlip([file]);
+
+    const formData = new FormData();
+    formData.append("file", file);
+    await axios
+      .post("https://ohms-api.fly.dev/upload/hostelSlip", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setPaymentSlipUrl(res.data?.data?.hostelPaySlipUrl);
+        toast.success("Hostel Slip uploaded succesfully.", {
+          position: toast.POSITION.TOP_RIGHT,
+          hideProgressBar: true,
+          autoClose: 3000,
+          transition: Slide,
+          className: styles.toast,
+        });
+      })
+      .catch((res) => {
+        console.log(res);
+      });
   };
 
-  const handleFileChangeLaw = (
+  const handleFileChangeLaw = async (
     event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    const file: File | any = event.target.files;
+  ) => {
+    const file: File | any = event.target.files?.[0];
 
     setLawyerLetter([file]);
+
+    const formData = new FormData();
+
+    formData.append("file", file);
+    await axios
+      .post("https://ohms-api.fly.dev/upload/letter", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data?.data?.letterUrl);
+        setLawyerLetterUrl(res.data?.data?.letterUrl);
+        toast.success("Letter uploaded succesfully.", {
+          position: toast.POSITION.TOP_RIGHT,
+          hideProgressBar: true,
+          autoClose: 3000,
+          transition: Slide,
+          className: styles.toast,
+        });
+      })
+      .catch((res) => {
+        console.log(res);
+      });
   };
 
-  const handleFileChangeWap = (
+  const handleFileChangeWap = async (
     event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    const file: File | any = event.target.files;
+  ) => {
+    const file: any = event.target.files?.[0];
 
     setWapicReceipt([file]);
+
+    const formData = new FormData();
+    formData.append("file", file);
+    await axios
+      .post("https://ohms-api.fly.dev/upload/wapic", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data?.data?.wapicUrl);
+        setWapicReceiptUrl(res.data?.data?.wapicUrl);
+        toast.success("Wapic uploaded succesfully.", {
+          position: toast.POSITION.TOP_RIGHT,
+          hideProgressBar: true,
+          autoClose: 3000,
+          transition: Slide,
+          className: styles.toast,
+        });
+      })
+      .catch((res) => {
+        console.log(res);
+      });
   };
 
-  const handleFileChangeLag = (
+  const handleFileChangeLag = async (
     event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    const file: File | any = event.target.files;
+  ) => {
+    const file: File | any = event.target.files?.[0];
 
     // setLagmobileReceipt([...lagmobileReceipt, file]);
     setLagmobileReceipt([file]);
+
+    const formData = new FormData();
+    formData.append("file", file);
+    await axios
+      .post("https://ohms-api.fly.dev/upload/lagmobile", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data?.data?.letterUrl);
+        setLagmobileReceiptUrl(res.data?.data?.lagmobileUrl);
+        toast.success("LagMobile uploaded succesfully.", {
+          position: toast.POSITION.TOP_RIGHT,
+          hideProgressBar: true,
+          autoClose: 3000,
+          transition: Slide,
+          className: styles.toast,
+        });
+      })
+      .catch((res) => {
+        console.log(res);
+      });
   };
 
   // };
@@ -304,7 +286,7 @@ const UserApplicationUI = () => {
                   <div className={styles.wordsInput}>
                     <div className={styles.input}>
                       <label htmlFor="name">Surname</label>
-                      <input type="text" id="name" {...register("fistname")} />
+                      <input type="text" id="name" {...register("firstname")} />
                     </div>
                     <div className={styles.inputgroups}>
                       <div className={styles.input}>
@@ -458,7 +440,6 @@ const UserApplicationUI = () => {
                                   size={getSizeInMb(item.size)}
                                   onClick={() => removeFilePay(item.name)}
                                 />
-                                <button onClick={uploadLetter}>Upload</button>
                               </>
                             );
                           })}
@@ -567,7 +548,7 @@ const UserApplicationUI = () => {
               </form>
             </div>
           </>
-        ) : extractedData?.note === "Approved" || "approved" ? (
+        ) : extractedData?.note === "approved" ? (
           <>
             <CustomPage
               Svg={<ConfirmationApplicationIcon />}

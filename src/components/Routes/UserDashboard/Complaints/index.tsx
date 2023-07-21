@@ -25,6 +25,7 @@ const UserCompliantUI = () => {
           transition: Slide,
           className: styles.toast,
         });
+        reset();
       });
   };
 

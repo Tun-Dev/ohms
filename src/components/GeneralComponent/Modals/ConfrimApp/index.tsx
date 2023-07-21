@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import { Button } from "components/GeneralComponent/Button";
+import { useSubmitApplicationMutation } from "services/auth/authService";
 import { ConfirmationApplicationIcon } from "assets";
+import { Slide, ToastContainer, toast } from "react-toastify";
 import { Modal } from "react-bootstrap";
 
 interface ConAppProps {
@@ -15,10 +17,26 @@ const ConfirmApplication: React.FC<ConAppProps> = ({
   closeModal,
   data,
 }) => {
-  //   console.log("modal data", data);
+  console.log("modal data", data);
 
-  const submit = () => {
-    console.log("submit data", data);
+  const [submitAPplication] = useSubmitApplicationMutation();
+
+  const submit = async () => {
+    // console.log("submit data", data);
+    await submitAPplication({ data: data })
+      .unwrap()
+      .then((res) => {
+        console.log(res);
+        toast.success("Application sent.", {
+          position: toast.POSITION.TOP_RIGHT,
+          hideProgressBar: true,
+          autoClose: 3000,
+          transition: Slide,
+          className: styles.toast,
+        });
+        closeModal();
+        // reset();
+      });
   };
 
   return (

@@ -15,8 +15,9 @@ const AdminDashboardUI = () => {
   const allApplicationsBucket: any = allApplications || [];
   const allRoomsInventoryBucket: any = allRoomsInventory || [];
 
-  // console.log(allApplicationsBucket);
-  console.log(allRoomsInventoryBucket);
+  console.log(allApplicationsBucket);
+
+  // console.log(allRoomsInventoryBucket);
 
   const extractedData = useMemo(() => {
     const filteredData = allApplicationsBucket.data;
@@ -79,6 +80,7 @@ const AdminDashboardUI = () => {
                       return (
                         <AppsCard
                           key={index}
+                          id={item._id}
                           status={item.status}
                           name={`${item.firstname} ${item.lastname} ${item.othername}`}
                           faculty={item.faculty}

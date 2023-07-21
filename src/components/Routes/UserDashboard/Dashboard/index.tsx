@@ -16,12 +16,13 @@ const UserDashboardUI = () => {
   const userProfileBucket: any = userProfile || [];
 
   const extractedData = useMemo(() => {
-    const filteredData = userProfileBucket?.data;
+    const filteredData = userProfileBucket?.data?.respData;
     return filteredData;
   }, [userProfileBucket]);
 
   console.log(userProfile?.data);
-  console.log(error);
+  // console.log(error);
+  console.log(extractedData?.note);
 
   return (
     <>
@@ -36,7 +37,16 @@ const UserDashboardUI = () => {
               btnText="Start application"
             />
           </>
-        ) : extractedData?.note === "Reviewing" || "reveiwing" ? (
+        ) : extractedData?.note === "approved" ? (
+          <>
+            <CustomPage
+              Svg={<ConfirmationApplicationIcon />}
+              header="Your hostel confirmation slip is ready"
+              desc="Hey, you can now download your hostel confirmation slip."
+              btnText="Download slip"
+            />
+          </>
+        ) : extractedData?.note === "reveiwing" ? (
           <>
             <CustomPage
               Svg={<ReviewApplication />}
@@ -46,16 +56,17 @@ const UserDashboardUI = () => {
               btnText="Lodge a complaint"
             />
           </>
-        ) : extractedData?.note === "Approved" || "approved" ? (
+        ) : (
           <>
             <CustomPage
-              Svg={<ConfirmationApplicationIcon />}
-              header="Your hostel confirmation slip is ready"
-              desc="Hey, you can now download your hostel confirmation slip."
-              btnText="Download slip"
+              Svg={<NoApplicationIcon />}
+              header="Oops... You have no application yet"
+              desc="Hey, you have not applied for any bedspace.
+            Go to the applications page and start the process now."
+              btnText="Start application"
             />
           </>
-        ) : null}
+        )}
       </div>
     </>
   );

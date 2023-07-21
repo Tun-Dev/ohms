@@ -35,6 +35,10 @@ const CustomPage: React.FC<CustomPageProps> = ({
             if (btnText === "Lodge a complaint") {
               navigate("/user/complaint");
             }
+
+            if (btnText === "Download slip") {
+              navigate("/user/confirmation");
+            }
           }}
         >
           {btnText}

@@ -7,6 +7,14 @@ interface ApplicationDetail {
   // Other properties
 }
 
+interface acceptApplicationDetail {
+  // Define the properties and their types based on the data structure
+  id: any;
+  status: any;
+  // ...
+  // Other properties
+}
+
 export const adminApi = createApi({
   reducerPath: "adminApi",
   baseQuery: fetchBaseQuery({
@@ -46,10 +54,10 @@ export const adminApi = createApi({
         body: data,
       }),
     }),
-    uploadLetter: build.mutation<{}, FormData>({
-      query: (data) => ({
+    uploadLetter: build.mutation<any, any>({
+      query: ({ data }) => ({
         url: "/upload/letter",
-        headers: { "Content-Type": "form-data" },
+        headers: { "Content-TYpe": "form-data" },
         method: "POST",
         body: data,
       }),
@@ -113,6 +121,13 @@ export const adminApi = createApi({
         method: "GET",
       }),
     }),
+    acceptApplication: build.mutation({
+      query: ({ id, status }) => ({
+        url: `/application/${id}/review?status=approved`,
+        headers: { "Content-Type": "application/json" },
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -132,4 +147,5 @@ export const {
   useGetRoomsInventoryQuery,
   useGetRoomsQuery,
   useGetSpecificRoomQuery,
+  useAcceptApplicationMutation,
 } = adminApi;

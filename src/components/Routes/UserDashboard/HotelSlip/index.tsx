@@ -1,13 +1,17 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 // import { Preview, print } from "react-html2pdf";
 import { CustomPage } from "components/GeneralComponent";
-import { AVI5, NoApplicationIcon } from "assets";
+import { AVI5, NoApplicationIcon, Avatar } from "assets";
 import { UnilagLogo, SlipImg } from "assets";
 import { Button } from "components/GeneralComponent";
 import styles from "./styles.module.scss";
 import html2canvas from "html2canvas";
 import jsPdf from "jspdf";
-import { useGetUserProfileQuery } from "services/auth/authService";
+import {
+  useGetUserProfileQuery,
+  useGetSpecificApplicationDetailQuery,
+} from "services/auth/authService";
+import axios from "axios";
 // import { CustomPage } from "components/GeneralComponent";
 // import { jsPDF, jsPDFOptions } from "jspdf";
 
@@ -58,14 +62,45 @@ const UserHostelSlipUI = () => {
 
   const id = localStorage.getItem("idOHMS");
   console.log(id);
-  const { data: userProfile, error } = useGetUserProfileQuery({ id: id });
+  const { data: userProfile } = useGetUserProfileQuery({ id: id });
 
   const userProfileBucket: any = userProfile || [];
 
+  console.log(userProfileBucket);
+
   const extractedData = useMemo(() => {
-    const filteredData = userProfileBucket?.data;
+    const filteredData = userProfileBucket?.data?.respData;
     return filteredData;
   }, [userProfileBucket]);
+
+  // console.log(userProfile?.data);
+  // console.log(error);
+  console.log(extractedData?.note);
+
+  // const id = localStorage.getItem("idOHMS");
+
+  // const { data: specificApplication, error } =
+  //   useGetSpecificApplicationDetailQuery({ id: id });
+
+  // console.log(specificApplication);
+  // console.log(error);
+
+  // const token = localStorage.getItem("tokenOHMS");
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://ohms-api.fly.dev/application/${id}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((res) => {
+  //       console.log(res);
+  //     });
+  // });
 
   return (
     <>
@@ -90,107 +125,113 @@ const UserHostelSlipUI = () => {
             />
           </div>
         </>
-      ) : null}
-      {/* <div className={styles.slipcontainer}>
-        <div className={styles.slip} id="test">
-          <div className={styles.slip__top}>
-            <div className={styles.slip__top__left}>
-              <img src={UnilagLogo} alt="" />
+      ) : extractedData?.note === "approved" ? (
+        <>
+          <div className={styles.slipcontainer}>
+            <div className={styles.slip} id="test">
+              <div className={styles.slip__top}>
+                <div className={styles.slip__top__left}>
+                  <img src={UnilagLogo} alt="" />
+                </div>
+                <div className={styles.slip__top__mid}>
+                  <div className={styles.wordtop}>
+                    <h4>UNIVERSITY OF LAGOS</h4>
+                    <h5>STUDENT AFFAIRS DIVISION</h5>
+                  </div>
+                  <div className={styles.worddown}>
+                    <h4>CLEARANCE FORM FOR ACCOMMODATION</h4>
+                  </div>
+                </div>
+                <div className={styles.slip__top__right}>
+                  <img src={Avatar} alt="" />
+                </div>
+              </div>
+              <div className={styles.slip__mid}>
+                <div className={styles.slip__mid__top}>
+                  <div className={styles.write}>
+                    <h4>MR./MRS./MISS:</h4>
+                    <div className={styles.res}>
+                      <h5>
+                        {extractedData?.firstname} {extractedData?.lastname}{" "}
+                        {extractedData?.othername}
+                      </h5>
+                    </div>
+                  </div>
+                  <div className={styles.write}>
+                    <h4>FACULTY/DEPARTMENT:</h4>
+                    <div className={styles.res}>
+                      <h5>{extractedData?.department}</h5>
+                    </div>
+                  </div>
+                  <div className={styles.write2}>
+                    <div className={styles.item}>
+                      <h4>YEAR OF STUDY (LEVEL):</h4>
+                      <div className={styles.res}>
+                        <h5>{extractedData?.level}</h5>
+                      </div>
+                    </div>
+                    <div className={styles.item}>
+                      <h4>HOSTEL:</h4>
+                      <div className={styles.res}>
+                        <h5>Jaja</h5>
+                      </div>
+                    </div>
+                    <div className={styles.item}>
+                      <h4>ROOM NO:</h4>
+                      <div className={styles.res}>
+                        <h5>{extractedData?.roomNumber}</h5>
+                      </div>
+                    </div>
+                    <div className={styles.item}>
+                      <h4>BED SPACE</h4>
+                      <div className={styles.res}>
+                        <h5>A</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.slip__mid__bot}>
+                  <div className={styles.sign}>
+                    <div className={styles.inner}>
+                      <div className={styles.write}></div>
+                      <div className={styles.words}>
+                        <h4>HALL WARDEN</h4>
+                        <h5>Sign & Official Stamp</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.sign}>
+                    <div className={styles.inner}>
+                      <div className={styles.write}></div>
+                      <div className={styles.words}>
+                        <h4>HOSPITALITY STAFF</h4>
+                        <h5>Sign & Official Stamp</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div></div>
+                </div>
+              </div>
+              <div className={styles.slip__bottom}>
+                <h4>
+                  <span>IMPORTANT NOTICE:</span> THIS CLEARNACE SLIP SERVES AS
+                  AN IDENTIFICATION DOCUMENT IN ALL TRANSACTIONS WITH THE
+                  STUDENT AFFAIRS DIVISION OFFICE
+                </h4>
+              </div>
             </div>
-            <div className={styles.slip__top__mid}>
-              <div className={styles.wordtop}>
-                <h4>UNIVERSITY OF LAGOS</h4>
-                <h5>STUDENT AFFAIRS DIVISION</h5>
-              </div>
-              <div className={styles.worddown}>
-                <h4>CLEARANCE FORM FOR ACCOMMODATION</h4>
-              </div>
-            </div>
-            <div className={styles.slip__top__right}>
-              <img src={SlipImg} alt="" />
-            </div>
-          </div>
-          <div className={styles.slip__mid}>
-            <div className={styles.slip__mid__top}>
-              <div className={styles.write}>
-                <h4>MR./MRS./MISS:</h4>
-                <div className={styles.res}>
-                  <h5>Tungbulu Douye Paul</h5>
-                </div>
-              </div>
-              <div className={styles.write}>
-                <h4>FACULTY/DEPARTMENT:</h4>
-                <div className={styles.res}>
-                  <h5>Engineering</h5>
-                </div>
-              </div>
-              <div className={styles.write2}>
-                <div className={styles.item}>
-                  <h4>YEAR OF STUDY (LEVEL):</h4>
-                  <div className={styles.res}>
-                    <h5>200</h5>
-                  </div>
-                </div>
-                <div className={styles.item}>
-                  <h4>HOSTEL:</h4>
-                  <div className={styles.res}>
-                    <h5>Jaja</h5>
-                  </div>
-                </div>
-                <div className={styles.item}>
-                  <h4>ROOM NO:</h4>
-                  <div className={styles.res}>
-                    <h5>B114</h5>
-                  </div>
-                </div>
-                <div className={styles.item}>
-                  <h4>BED SPACE</h4>
-                  <div className={styles.res}>
-                    <h5>A</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.slip__mid__bot}>
-              <div className={styles.sign}>
-                <div className={styles.inner}>
-                  <div className={styles.write}></div>
-                  <div className={styles.words}>
-                    <h4>HALL WARDEN</h4>
-                    <h5>Sign & Official Stamp</h5>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.sign}>
-                <div className={styles.inner}>
-                  <div className={styles.write}></div>
-                  <div className={styles.words}>
-                    <h4>HOSPITALITY STAFF</h4>
-                    <h5>Sign & Official Stamp</h5>
-                  </div>
-                </div>
-              </div>
-              <div></div>
-            </div>
-          </div>
-          <div className={styles.slip__bottom}>
-            <h4>
-              <span>IMPORTANT NOTICE:</span> THIS CLEARNACE SLIP SERVES AS AN
-              IDENTIFICATION DOCUMENT IN ALL TRANSACTIONS WITH THE STUDENT
-              AFFAIRS DIVISION OFFICE
-            </h4>
-          </div>
-        </div>
 
-        <Button
-          size="medium"
-          color="blue"
-          className={styles.btn}
-          onClick={() => printPDF()}
-        >
-          Click to Print
-        </Button>
-      </div> */}
+            <Button
+              size="medium"
+              color="blue"
+              className={styles.btn}
+              onClick={() => printPDF()}
+            >
+              Click to Print
+            </Button>
+          </div>
+        </>
+      ) : null}
 
       {/* <button id="print" onClick={printPDF}>
         Print

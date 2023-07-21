@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import styles from "./styles.module.scss";
 import { CloseIcon, AVI5, DownloadIcon } from "assets";
 import { Modal } from "react-bootstrap";
 import { Button } from "components/GeneralComponent/Button";
-import { useGetSpecificApplicationDetailQuery } from "services/auth/authService";
+import {
+  useGetSpecificApplicationDetailQuery,
+  useAcceptApplicationMutation,
+} from "services/auth/authService";
 
 interface ViewAppProps {
   show: boolean;
@@ -23,6 +26,26 @@ const ViewApplicationDetails: React.FC<ViewAppProps> = ({
     useGetSpecificApplicationDetailQuery({ id: id });
 
   console.log(specificApplication);
+
+  const [acceptApp] = useAcceptApplicationMutation();
+
+  const allSpecificApplicationBucket: any = specificApplication || [];
+
+  const extractedData = useMemo(() => {
+    const filteredData = allSpecificApplicationBucket.data?.respData;
+    return filteredData;
+  }, [allSpecificApplicationBucket]);
+
+  const accept = async () => {
+    await acceptApp({ id: id, status: `approved` })
+      .unwrap()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((res) => {
+        console.log(res);
+      });
+  };
   // console.log(error);
 
   return (
@@ -49,15 +72,18 @@ const ViewApplicationDetails: React.FC<ViewAppProps> = ({
             </div>
             <div className={styles.mid}>
               <div className={styles.mid__top}>
-                <img src={AVI5} alt="" />
+                {/* <img src={AVI5} alt="" /> */}
                 <h4>
-                  <span>Name:</span>Olayiwola John Damilola
+                  <span>Name:</span>
+                  {`${extractedData?.firstname} ${extractedData?.lastname} ${extractedData?.othername}`}
                 </h4>
                 <h4>
-                  <span>Department:</span>Chemical Engineering
+                  <span>Department:</span>
+                  {extractedData && extractedData?.department}
                 </h4>
                 <h4>
-                  <span>Level: </span>300
+                  <span>Level: </span>
+                  {extractedData && extractedData.level}
                 </h4>
               </div>
               <div className={styles.mid__down}>
@@ -114,7 +140,7 @@ const ViewApplicationDetails: React.FC<ViewAppProps> = ({
                   size="medium"
                   color="blue"
                   className={styles.btn2}
-                  onClick={() => null}
+                  onClick={() => accept()}
                 >
                   Accept application
                 </Button>

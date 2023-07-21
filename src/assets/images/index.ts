@@ -7,6 +7,7 @@ import Avi4 from "./avi4.png";
 import AVI5 from "./view.png";
 import SlipImg from "./slipimg.png";
 import UnilagLogo from "./unilag.png";
+import Avatar from "./avatar.jpg";
 
 export {
   AdminLoginBg,
@@ -18,4 +19,5 @@ export {
   AVI5,
   SlipImg,
   UnilagLogo,
+  Avatar,
 };

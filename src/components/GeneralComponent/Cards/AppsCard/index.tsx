@@ -47,6 +47,8 @@ const AppsCard: React.FC<AppsCardProps> = ({
     options
   );
 
+  console.log(status);
+
   // console.log(id);
   // useEffect(() => {
   //   console.log(window.innerWidth);
@@ -63,9 +65,9 @@ const AppsCard: React.FC<AppsCardProps> = ({
         <div className={styles.item}>
           <div
             className={`${styles.status} ${
-              status === "'ACCEPTED'"
+              status === "approved"
                 ? styles.approved
-                : status === "PENDING" || "Pending"
+                : status === "pending"
                 ? styles.pending
                 : status === "REJECTED"
                 ? styles.rejected
@@ -73,14 +75,14 @@ const AppsCard: React.FC<AppsCardProps> = ({
             }`}
           >
             <div className={styles.dot}></div>
-            <h5>
-              {status === "'ACCEPTED'"
+            <h5> {status}</h5>
+            {/* {status === "approved"
                 ? "Accepted"
                 : status?.charAt(0).toUpperCase()}
               {status === "'ACCEPTED'"
                 ? ""
-                : status?.slice(1).toLocaleLowerCase()}
-            </h5>
+                : status?.slice(1).toLocaleLowerCase()} */}
+            {/* </h5> */}
           </div>
         </div>
         <div className={styles.item}>
