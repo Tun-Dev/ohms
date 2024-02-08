@@ -14,9 +14,9 @@ const AuthLayout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (authRole !== "admin" || !authToken) {
-      navigate("/admin");
-    }
+    // if (authRole !== "admin" || !authToken) {
+    //   navigate("/admin");
+    // }
   }, [navigate, authRole]);
   return (
     <>
@@ -54,9 +54,9 @@ const UserAuthLayout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (authRole !== "user" || !authToken) {
-      navigate("/");
-    }
+    // if (authRole !== "user" || !authToken) {
+    //   navigate("/");
+    // }
   }, [navigate, authRole]);
   return (
     <>

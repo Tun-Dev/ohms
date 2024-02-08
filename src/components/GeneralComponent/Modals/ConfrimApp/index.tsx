@@ -23,20 +23,28 @@ const ConfirmApplication: React.FC<ConAppProps> = ({
 
   const submit = async () => {
     // console.log("submit data", data);
-    await submitAPplication({ data: data })
-      .unwrap()
-      .then((res) => {
-        console.log(res);
-        toast.success("Application sent.", {
-          position: toast.POSITION.TOP_RIGHT,
-          hideProgressBar: true,
-          autoClose: 3000,
-          transition: Slide,
-          className: styles.toast,
-        });
-        closeModal();
-        // reset();
-      });
+    toast.success("Application sent.", {
+      position: toast.POSITION.TOP_RIGHT,
+      hideProgressBar: true,
+      autoClose: 3000,
+      transition: Slide,
+      className: styles.toast,
+    });
+    closeModal();
+    // await submitAPplication({ data: data })
+    //   .unwrap()
+    //   .then((res) => {
+    //     console.log(res);
+    //     toast.success("Application sent.", {
+    //       position: toast.POSITION.TOP_RIGHT,
+    //       hideProgressBar: true,
+    //       autoClose: 3000,
+    //       transition: Slide,
+    //       className: styles.toast,
+    //     });
+    //     closeModal();
+    //     // reset();
+    //   });
   };
 
   return (

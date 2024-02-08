@@ -7,6 +7,7 @@ import {
   useGetSpecificApplicationDetailQuery,
   useAcceptApplicationMutation,
 } from "services/auth/authService";
+import { toast, Slide } from "react-toastify";
 
 interface ViewAppProps {
   show: boolean;
@@ -31,20 +32,36 @@ const ViewApplicationDetails: React.FC<ViewAppProps> = ({
 
   const allSpecificApplicationBucket: any = specificApplication || [];
 
-  const extractedData = useMemo(() => {
-    const filteredData = allSpecificApplicationBucket.data?.respData;
-    return filteredData;
-  }, [allSpecificApplicationBucket]);
+  // const extractedData = useMemo(() => {
+  //   const filteredData = allSpecificApplicationBucket.data?.respData;
+  //   return filteredData;
+  // }, [allSpecificApplicationBucket]);
+
+  const extractedData = {
+    firstname: "Olayiwola",
+    lastname: "John",
+    othername: "D",
+    department: "Chemical Engineering",
+    level: "500",
+  };
 
   const accept = async () => {
-    await acceptApp({ id: id, status: `approved` })
-      .unwrap()
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((res) => {
-        console.log(res);
-      });
+    toast.success("Application Aceepted.", {
+      position: toast.POSITION.TOP_RIGHT,
+      hideProgressBar: true,
+      autoClose: 3000,
+      transition: Slide,
+      // className: styles.toast,
+    });
+    closeModal();
+    // await acceptApp({ id: id, status: `approved` })
+    //   .unwrap()
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((res) => {
+    //     console.log(res);
+    //   });
   };
   // console.log(error);
 

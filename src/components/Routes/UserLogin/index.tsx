@@ -33,7 +33,7 @@ const UserLoginUI = () => {
   // });
 
   const submitForm = (data: any) => {
-    dispatch(authLogin(data));
+    //   dispatch(authLogin(data));
   };
   return (
     <>
@@ -60,8 +60,8 @@ const UserLoginUI = () => {
                 color="blue"
                 type="submit"
                 onClick={() => {
-                  null;
-                  // navigate("/user/dashboard");
+                  // null;
+                  navigate("/user/dashboard");
                 }}
               >
                 LOG IN

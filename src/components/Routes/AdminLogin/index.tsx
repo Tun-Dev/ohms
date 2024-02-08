@@ -33,7 +33,7 @@ const AdminLoginUI = () => {
   // });
 
   const submitForm = (data: any) => {
-    dispatch(authLogin(data));
+    // dispatch(authLogin(data));
   };
   return (
     <>
@@ -62,8 +62,8 @@ const AdminLoginUI = () => {
                   type="submit"
                   color="blue"
                   onClick={() => {
-                    null;
-                    // navigate("/admin/dashboard");
+                    // null;
+                    navigate("/admin/dashboard");
                   }}
                 >
                   LOG IN

@@ -44,7 +44,7 @@ const compsData = [
     date: "09/01/2023",
     complaint:
       "Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet. Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet. Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh e...",
-    read: false,
+    read: true,
   },
 ];
 
@@ -104,15 +104,15 @@ const AdminComplaintsUI = () => {
             </div>
           </div>
           <div className={styles.con__wrapper__bottom}>
-            {allCompliantsBucket.data &&
-              allCompliantsBucket.data.map((data: any, index: number) => {
+            {compsData &&
+              compsData.map((data: any, index: number) => {
                 return (
                   <CompsCard
                     key={index}
                     title={data.title}
                     name={data.name}
-                    date={data.createdAt}
-                    complaint={data.description}
+                    date={data.date}
+                    complaint={data.complaint}
                     read={data.read}
                     img={Avi1}
                   />

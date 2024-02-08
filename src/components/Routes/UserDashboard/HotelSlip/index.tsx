@@ -68,14 +68,23 @@ const UserHostelSlipUI = () => {
 
   console.log(userProfileBucket);
 
-  const extractedData = useMemo(() => {
-    const filteredData = userProfileBucket?.data?.respData;
-    return filteredData;
-  }, [userProfileBucket]);
+  const extractedData = {
+    firstname: "Douye",
+    lastname: "Tungbulu",
+    othername: "Paul",
+    department: "Electrical/Electronic Engineering",
+    level: "500",
+    roomNumber: "A1",
+  };
+
+  // const extractedData = useMemo(() => {
+  //   const filteredData = userProfileBucket?.data?.respData;
+  //   return filteredData;
+  // }, [userProfileBucket]);
 
   // console.log(userProfile?.data);
   // console.log(error);
-  console.log(extractedData?.note);
+  // console.log(extractedData?.note);
 
   // const id = localStorage.getItem("idOHMS");
 
@@ -113,7 +122,7 @@ const UserHostelSlipUI = () => {
           btnText="Start application"
         />
       </div> */}
-      {extractedData && extractedData?.note === "No application" ? (
+      {/* {extractedData && extractedData?.note === "No application" ? (
         <>
           <div className={styles.con}>
             <CustomPage
@@ -125,113 +134,113 @@ const UserHostelSlipUI = () => {
             />
           </div>
         </>
-      ) : extractedData?.note === "approved" ? (
-        <>
-          <div className={styles.slipcontainer}>
-            <div className={styles.slip} id="test">
-              <div className={styles.slip__top}>
-                <div className={styles.slip__top__left}>
-                  <img src={UnilagLogo} alt="" />
+      ) : extractedData?.note === "approved" ? ( */}
+      <>
+        <div className={styles.slipcontainer}>
+          <div className={styles.slip} id="test">
+            <div className={styles.slip__top}>
+              <div className={styles.slip__top__left}>
+                <img src={UnilagLogo} alt="" />
+              </div>
+              <div className={styles.slip__top__mid}>
+                <div className={styles.wordtop}>
+                  <h4>UNIVERSITY OF LAGOS</h4>
+                  <h5>STUDENT AFFAIRS DIVISION</h5>
                 </div>
-                <div className={styles.slip__top__mid}>
-                  <div className={styles.wordtop}>
-                    <h4>UNIVERSITY OF LAGOS</h4>
-                    <h5>STUDENT AFFAIRS DIVISION</h5>
-                  </div>
-                  <div className={styles.worddown}>
-                    <h4>CLEARANCE FORM FOR ACCOMMODATION</h4>
-                  </div>
-                </div>
-                <div className={styles.slip__top__right}>
-                  <img src={Avatar} alt="" />
+                <div className={styles.worddown}>
+                  <h4>CLEARANCE FORM FOR ACCOMMODATION</h4>
                 </div>
               </div>
-              <div className={styles.slip__mid}>
-                <div className={styles.slip__mid__top}>
-                  <div className={styles.write}>
-                    <h4>MR./MRS./MISS:</h4>
-                    <div className={styles.res}>
-                      <h5>
-                        {extractedData?.firstname} {extractedData?.lastname}{" "}
-                        {extractedData?.othername}
-                      </h5>
-                    </div>
-                  </div>
-                  <div className={styles.write}>
-                    <h4>FACULTY/DEPARTMENT:</h4>
-                    <div className={styles.res}>
-                      <h5>{extractedData?.department}</h5>
-                    </div>
-                  </div>
-                  <div className={styles.write2}>
-                    <div className={styles.item}>
-                      <h4>YEAR OF STUDY (LEVEL):</h4>
-                      <div className={styles.res}>
-                        <h5>{extractedData?.level}</h5>
-                      </div>
-                    </div>
-                    <div className={styles.item}>
-                      <h4>HOSTEL:</h4>
-                      <div className={styles.res}>
-                        <h5>Jaja</h5>
-                      </div>
-                    </div>
-                    <div className={styles.item}>
-                      <h4>ROOM NO:</h4>
-                      <div className={styles.res}>
-                        <h5>{extractedData?.roomNumber}</h5>
-                      </div>
-                    </div>
-                    <div className={styles.item}>
-                      <h4>BED SPACE</h4>
-                      <div className={styles.res}>
-                        <h5>A</h5>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.slip__mid__bot}>
-                  <div className={styles.sign}>
-                    <div className={styles.inner}>
-                      <div className={styles.write}></div>
-                      <div className={styles.words}>
-                        <h4>HALL WARDEN</h4>
-                        <h5>Sign & Official Stamp</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.sign}>
-                    <div className={styles.inner}>
-                      <div className={styles.write}></div>
-                      <div className={styles.words}>
-                        <h4>HOSPITALITY STAFF</h4>
-                        <h5>Sign & Official Stamp</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div></div>
-                </div>
-              </div>
-              <div className={styles.slip__bottom}>
-                <h4>
-                  <span>IMPORTANT NOTICE:</span> THIS CLEARNACE SLIP SERVES AS
-                  AN IDENTIFICATION DOCUMENT IN ALL TRANSACTIONS WITH THE
-                  STUDENT AFFAIRS DIVISION OFFICE
-                </h4>
+              <div className={styles.slip__top__right}>
+                <img src={Avatar} alt="" />
               </div>
             </div>
-
-            <Button
-              size="medium"
-              color="blue"
-              className={styles.btn}
-              onClick={() => printPDF()}
-            >
-              Click to Print
-            </Button>
+            <div className={styles.slip__mid}>
+              <div className={styles.slip__mid__top}>
+                <div className={styles.write}>
+                  <h4>MR./MRS./MISS:</h4>
+                  <div className={styles.res}>
+                    <h5>
+                      {extractedData?.firstname} {extractedData?.lastname}{" "}
+                      {extractedData?.othername}
+                    </h5>
+                  </div>
+                </div>
+                <div className={styles.write}>
+                  <h4>FACULTY/DEPARTMENT:</h4>
+                  <div className={styles.res}>
+                    <h5>{extractedData?.department}</h5>
+                  </div>
+                </div>
+                <div className={styles.write2}>
+                  <div className={styles.item}>
+                    <h4>YEAR OF STUDY (LEVEL):</h4>
+                    <div className={styles.res}>
+                      <h5>{extractedData?.level}</h5>
+                    </div>
+                  </div>
+                  <div className={styles.item}>
+                    <h4>HOSTEL:</h4>
+                    <div className={styles.res}>
+                      <h5>Jaja</h5>
+                    </div>
+                  </div>
+                  <div className={styles.item}>
+                    <h4>ROOM NO:</h4>
+                    <div className={styles.res}>
+                      <h5>{extractedData?.roomNumber}</h5>
+                    </div>
+                  </div>
+                  <div className={styles.item}>
+                    <h4>BED SPACE</h4>
+                    <div className={styles.res}>
+                      <h5>A</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.slip__mid__bot}>
+                <div className={styles.sign}>
+                  <div className={styles.inner}>
+                    <div className={styles.write}></div>
+                    <div className={styles.words}>
+                      <h4>HALL WARDEN</h4>
+                      <h5>Sign & Official Stamp</h5>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.sign}>
+                  <div className={styles.inner}>
+                    <div className={styles.write}></div>
+                    <div className={styles.words}>
+                      <h4>HOSPITALITY STAFF</h4>
+                      <h5>Sign & Official Stamp</h5>
+                    </div>
+                  </div>
+                </div>
+                <div></div>
+              </div>
+            </div>
+            <div className={styles.slip__bottom}>
+              <h4>
+                <span>IMPORTANT NOTICE:</span> THIS CLEARNACE SLIP SERVES AS AN
+                IDENTIFICATION DOCUMENT IN ALL TRANSACTIONS WITH THE STUDENT
+                AFFAIRS DIVISION OFFICE
+              </h4>
+            </div>
           </div>
-        </>
-      ) : null}
+
+          <Button
+            size="medium"
+            color="blue"
+            className={styles.btn}
+            onClick={() => printPDF()}
+          >
+            Click to Print
+          </Button>
+        </div>
+      </>
+      {/* ) : null} */}
 
       {/* <button id="print" onClick={printPDF}>
         Print

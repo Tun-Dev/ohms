@@ -19,15 +19,20 @@ const AdminDashboardUI = () => {
 
   // console.log(allRoomsInventoryBucket);
 
-  const extractedData = useMemo(() => {
-    const filteredData = allApplicationsBucket.data;
-    return filteredData;
-  }, [allApplications]);
+  // const extractedData = useMemo(() => {
+  //   const filteredData = allApplicationsBucket.data;
+  //   return filteredData;
+  // }, [allApplications]);
 
-  const extractedData2 = useMemo(() => {
-    const filteredData = allRoomsInventoryBucket.data;
-    return filteredData;
-  }, [allRoomsInventory]);
+  // const extractedData2 = useMemo(() => {
+  //   const filteredData = allRoomsInventoryBucket.data;
+  //   return filteredData;
+  // }, [allRoomsInventory]);
+
+  const extractedData2 = {
+    totalRoomsAvailable: 10,
+    totalBedspacesAvailable: 20,
+  };
 
   return (
     <>
@@ -75,17 +80,18 @@ const AdminDashboardUI = () => {
                   </div>
                 </div>
                 <div className={styles.apps}>
-                  {extractedData &&
-                    extractedData.map((item: any, index: number) => {
+                  {AppsCardData &&
+                    AppsCardData.map((item: any, index: number) => {
                       return (
                         <AppsCard
                           key={index}
                           id={item._id}
                           status={item.status}
-                          name={`${item.firstname} ${item.lastname} ${item.othername}`}
+                          // name={`${item.firstname} ${item.lastname} ${item.othername}`}
+                          name={item.name}
                           faculty={item.faculty}
-                          dept={item.department}
-                          date={item.createdAt}
+                          dept={item.dept}
+                          date={item.date}
                         />
                       );
                     })}

@@ -6,6 +6,7 @@ import styles from "./styles.module.scss";
 import { AppsCard } from "components/GeneralComponent";
 import { useGetApplicationsQuery } from "services/auth/authService";
 import { AppsCardData } from "components/GeneralComponent";
+import { ToastContainer } from "react-toastify";
 
 const typeOptions = [
   { value: "all", label: "All" },
@@ -95,28 +96,30 @@ const AdminApplicationUI = () => {
                   </div>
                 </div>
                 <div className={styles.apps}>
-                  {extractedData &&
-                    extractedData
-                      .slice(0, 13)
-                      .map((item: any, index: number) => {
+                  {AppsCardData &&
+                    AppsCardData.slice(0, 13).map(
+                      (item: any, index: number) => {
                         return (
                           <AppsCard
                             key={index}
                             id={item._id}
                             status={item.status}
-                            name={`${item.firstname} ${item.lastname} ${item.othername}`}
+                            // name={`${item.firstname} ${item.lastname} ${item.othername}`}
+                            name={item.name}
                             faculty={item.faculty}
-                            dept={item.department}
-                            date={item.createdAt}
+                            dept={item.dept}
+                            date={item.date}
                           />
                         );
-                      })}
+                      }
+                    )}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

@@ -96,15 +96,15 @@ const ViewRoomDetails: React.FC<ViewRoomProps> = ({ show, closeModal, id }) => {
                   <div className={styles.header}>Department</div>
                 </div>
                 <div className={styles.body}>
-                  {extractedData === 0 ? <h4>No residents</h4> : null}
-                  {/* {data.map((item, index) => (
+                  {/* {extractedData === 0 ? <h4>No residents</h4> : null} */}
+                  {data.map((item, index) => (
                     <BodyLine
                       key={index}
                       name={item.name}
                       level={item.level}
                       dept={item.dept}
                     />
-                  ))} */}
+                  ))}
                 </div>
               </div>
             </div>

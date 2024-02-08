@@ -57,20 +57,20 @@ const AdminInventoryUI = () => {
                   </div>
                 </div>
                 <div className={styles.apps}>
-                  {extractedData &&
-                    extractedData
-                      .slice(0, 13)
-                      .map((item: any, index: number) => {
+                  {InventoryData &&
+                    InventoryData.slice(0, 13).map(
+                      (item: any, index: number) => {
                         return (
                           <InventoryCard
                             id={item._id}
                             key={index}
-                            status={item.roomStatus}
+                            status={item.status}
                             room={item.roomNumber}
-                            noOfresidents={item.roomType}
+                            noOfresidents={item.noOfResidents}
                           />
                         );
-                      })}
+                      }
+                    )}
                 </div>
               </div>
             </div>
